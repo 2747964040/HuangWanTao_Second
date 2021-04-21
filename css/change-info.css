@@ -1,0 +1,132 @@
+.chan-top-nav {
+    width: 100%;
+    background-color: #fff;
+    height: 46px;
+    margin-top: 61px;
+}
+
+.chan-top-list li a {
+    height: 46px;
+    width: 80px;
+    text-align: center;
+    line-height: 46px;
+    float: left;
+    font-size: 14px;
+    color: rgb(112, 112, 112);
+}
+
+.chan-top-list .chan-return {
+    width: 106px;
+}
+
+.chan-more-icon {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid rgb(133, 131, 131);
+    border-left: 2px solid rgb(143, 142, 142);
+    transform: rotate(-45deg);
+}
+
+.chan-top-nav ul .current {
+    color: #007fff;
+}
+
+.chan-top-nav ul a:hover {
+    color: #007fff;
+}
+
+.chan-top-nav ul a:hover .chan-more-icon {
+    border-color: #007fff;
+}
+
+.chan-body-box {
+    margin-top: 10px;
+    width: 600px;
+    padding: 33px 48px;
+    padding-bottom: 84px;
+    background-color: #fff;
+}
+
+.chan-body-box h1 {
+    border-bottom: 1px solid #ccc;
+    height: 31px;
+    padding: 16px 0;
+    margin: 0;
+}
+
+.chan-info-list .chan-item {
+    height: 72px;
+    line-height: 72px;
+    border-bottom: 1px solid #ccc;
+    padding: 12px 0;
+}
+
+.chan-ava {
+    float: left;
+    margin-right: 25px;
+}
+
+.chan-item em {
+    float: left;
+    width: 120px;
+    font-size: 15px;
+    color: black;
+}
+
+.chan-ava-right {
+    height: 100%;
+    line-height: 18px;
+    font-size: 12px;
+    color: #909090;
+    float: left;
+}
+
+.sub-ava {
+    width: 80px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #007fff;
+    color: white;
+    padding: 6px 15px;
+    margin-top: 18px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.chan-item input {
+    width: 410px;
+    /* 缩小 */
+    /* width: 383px; */
+    color: #ccc;
+    height: 23px;
+    line-height: 23px;
+    padding: 1px 2px;
+    font-size: 16px;
+}
+
+.chan-info-but {
+    /* width: 52px; */
+    height: 100%;
+    line-height: 72px;
+}
+
+.chan-info-but li {
+    float: left;
+    font-size: 15px;
+    color: #007fff;
+}
+.chan-info-but li img{
+    position: relative;
+    top: 3px;
+    right: 5px;
+    width: 18px;
+}
+.chan-info-but  span{
+    height: 20px;
+}
+.chan-info-but .cancel{
+    color: #666;
+    margin-left: 20px;
+}

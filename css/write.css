@@ -1,0 +1,123 @@
+.write-page{
+    /* width: 100%; */
+    width: 1600px;
+    margin: 0 auto;
+    height: 100%;
+}
+.wri-top{
+    padding: 0 27px;
+    height: 63px;
+    line-height: 63px;
+    background-color: #fff;
+}
+.wri-top img{
+    position: relative;
+    top: 4px;
+    margin-right: 20px;
+}
+.wri-top input{
+    width: 1174px;
+    height: 63px;
+    line-height: 63px;
+    font-size: 24px;
+    color: #1d2129;
+}
+.wri-tools{
+    height: 33px;
+  background-color: #fafbfc;
+    padding: 4px 12px;
+    border: 1px solid rgb(14, 13, 13);
+    border-left: 0;
+    border-right: 0;
+    /* background-color: #fafbfc; */
+}
+.wri-top-list{
+    height: 63px;
+    line-height: 63px;
+}
+.wri-top-list li{
+    float: left;
+}
+.wri-top-list .draft{
+    margin: 0px 20px;
+    border-radius: 3px;
+    margin-top: 16px;
+    width: 44px;
+    height: 28px;
+    line-height: 32px;
+    text-align: center;
+    color: #1d7dfa;
+    font-size: 14px;
+    padding: 2px 16px ;
+    border: 1px solid #1d7dfa;
+}
+.wri-top-list .post{
+    border-radius: 3px;
+    width: 28px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    padding: 2px 16px;
+    background-color: #1d7dfa;
+    font-size: 14px;
+    margin-top: 16px;
+}
+.wri-top-list .wri-r-icon{
+    width: 24px;
+    height: 27px;
+    margin: 0 15px;
+    margin-top: 15px;
+}
+.wri-top-list li:last-of-type{
+    width: 32px;
+    height: 32px;
+    margin-top: 8px;
+}
+
+
+
+
+.write-area-box{
+    width: 100%;
+    height: 651px;
+}
+.left-area{
+    width: 50%;
+    height: 100%;
+    background-color: pink;
+    border-right: 1px solid #000;
+}
+.left-area textarea{
+    background-color: #f8f9fa;
+    padding: 30px;
+    outline: none;
+    font-size: 15px;
+    resize: none;
+    width: 740px;
+    height: 591px;
+}
+.right-area{
+    background-color: #fff;
+    width: 798px;
+    height: 100%;
+}
+.right-area pre{
+    /* white-space: normal; */
+    word-break:break-all;
+    margin: 0;
+    padding: 30px;
+    font-size: 15px;
+    width: 730px;
+    height: 591px;
+}
+
+.wri-bot-list{ 
+    border-top: 1px solid #000;
+    height: 31px;
+    line-height: 31px;
+    padding:0  17px;
+}
+.wri-bot-list li{
+    margin-right: 20px;
+    font-size: 14px;
+}

@@ -1,0 +1,620 @@
+.wenz-detail{
+    margin-top: 81px;
+}
+
+/* 主体部分 */
+
+/* 主体左侧 */
+.wenz-body-box{
+    overflow: hidden;
+}
+
+.wenz-body-left-box {
+    float: left;
+    width: 652px;
+    padding:0 24px;
+    height: 100%;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.wenz-author-box{
+    margin-top: 24px;
+    height: 43px;
+}
+.wenz-author-box .author-ava{
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.wenz-val{
+    margin-top: 20px;
+width: 100%;
+height: 200px;
+}
+.wenz-author-info .name{
+ height: 21px;
+ font-size:15px ;
+ margin-top: 3px;
+ font-weight:bolder;
+ line-height: 0;
+}
+.wenz-author-info img{
+    margin-left: 8px;
+    position: relative;
+    top: 2px;
+}
+.wenz-author-info .date{
+    height: 21px;
+    line-height: 10px;
+    font-size:13px ;
+    margin-top: 3px;
+}
+.wenz-author-box .guanz-author{
+    padding:0 16px;
+    height: 26px;
+    text-align: center;
+    line-height: 27px;
+    margin-top: 8px;
+    border:1px solid #6cbd45 ;
+    /* background-color: #6cbd45; */
+    border-radius: 3px;
+    /* color: white; */
+    font-size: 13px;
+
+    /* 未关注时 */
+    color:  #6cbd45;
+    background-color: #fff;
+}
+/* 主体右侧内容 */
+
+.wenz-body-right-box {
+    float: right;
+    width: 240px;
+}
+
+
+.banner-img-top {
+    display: block;
+    position: relative;
+    width: 240px;   
+    background-color: #fff;
+    height: 204px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.158);
+}
+.about-author{
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+}
+.left-author-info .ava{
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.left-author-info{
+    height: 52px;
+    padding: 16px;
+    font-size: 14px;
+}
+.left-author-name .name{
+ font-size: 16px;
+ margin-top: 2px;
+ font-weight: 600;
+ color: #000;
+}
+.left-author-name img{
+    position: relative;
+    top: 2px;
+    margin-left: 8px;
+}
+.left-author-name .positon{
+    height: 20px;
+    margin-top: 6px;
+    font-size: 15px;
+}
+.stat-item{
+    height: 26px;
+    padding: 0 16px;
+    color: #000;
+    font-size: 15px;
+    margin-bottom: 11px;
+
+}
+.stat-item i{
+    width: 23px;
+    height: 25px;
+    font-size: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #e1efff;
+    color: #7bb9ff;
+    margin-right: 6px;
+    padding-left: 2px;
+    text-align: center; 
+    line-height: 25px;
+}
+.stat-item .icon-chakan{
+    font-size: 17px;
+    line-height: 26px;
+}
+
+.stat-list .num{
+    display: inline-block;
+    margin: 0 5px;
+    color: #000;
+}
+
+
+
+
+.offer-guangg {
+    display: block;
+    margin-top: 12px;
+    width: 240px;
+    background-color: #fff;
+}
+
+.download-clident-box {
+    overflow: hidden;
+    background-color: #fff;
+    padding: 10px;
+    width: 220px;
+}
+
+.download-clident-box img {
+    float: left;
+}
+
+.download-clident-box .download-c-text {
+    float: right;
+    width: 154px;
+    padding-left: 16px;
+}
+
+.download-c-text div {
+    width: 150px;
+    height: 32px;
+    line-height: 30px;
+    color: black;
+    font-size: 15px;
+}
+
+.download-c-text em {
+    color: #86909c;
+    font-size: 12px;
+}
+
+.chat-group-con{
+    margin-top: 16px;
+}
+.more-wenz{
+    margin-top: 16px;
+    width: 100%;
+}
+.more-wenz-top{
+    padding:12px 15px;
+    width: 210px;
+    height: 19px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+.more-wenz-list li{
+    /* width: 100%; */
+    width: 210px;
+    padding:9px 15px;
+    overflow: hidden;
+    background-color: #fff;
+}
+.more-wenz-title{
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.more-wenz-tools .tools-item{
+    height: 18px;
+    line-height: 18px;
+    color: 909090; 
+    margin-top: 5px;
+    padding: 0;
+    font-size: 13px;
+    width: 50px;
+    margin-right: 20px;
+    float: left;
+}
+.tools-item i{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 9px;
+    position: relative;
+    top: 2px;
+}
+.tools-item .icon-dianzan{
+    font-size: 13px;
+    top: 0;
+}
+/* 左侧悬浮列表 */
+.left-tools-list{
+    position:fixed;
+    left: 230px;
+    top: 195px;
+    width: 36px;
+}
+.le-tools-item{
+    width: 100%;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-bottom: 9px;
+    text-align: center;
+    line-height: 36px;
+    position: relative;
+}
+.left-tools-list .share{
+    width: 100%;
+    height: 16px;
+    font-size: 12px;
+    text-align: center;
+    margin: 30px 0 12px;
+    color: #9c9c9c;
+}
+.le-tools-item i{
+    color: #9c9c9c; 
+}
+
+.le-tools-item span{
+    position: absolute;
+    top: 2px;
+    left: 25px;
+    padding: 0 3px;
+    font-size: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    height: 11px;
+    line-height: 11px;
+    text-align: center;
+    color: white;
+    /* background-color: #6cbd45; */
+    background-color: #b2bac2;
+}
+
+/* 评论区 */
+.wenz-pl{
+    width: 100%;
+    /* height: 92px; */
+    margin-top: 20px;
+    border-top: 1px solid #ccc;  
+    margin-bottom: 20px ; 
+}
+.tag-list-box {
+    height: 21px;
+    line-height: 21px;
+    padding: 24px 0 ;
+    font-size: 14px;
+}
+.tag-list-box .fir-tag span{
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0 3px;
+    color: #4e5969;
+    background-color: rgb(221, 220, 220);
+}
+.sec-tag{
+    padding-left: 40px;
+}
+.sec-tag img{
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 6px;
+}
+.footer-author-box{
+    margin-bottom: 24px;
+    padding: 15px 17px;
+    background-color: #f4f5f5;
+    height: 41px;
+}
+/* copo */
+
+.footer-author-box{
+    margin-top: 24px;
+    height: 43px;
+    background-color: #f4f5f5;
+}
+.footer-author-box .author-ava{
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.foo-author-info .name{
+ height: 21px;
+ font-size:16px ;
+ margin-top: 3px;
+ font-weight:bolder;
+ line-height: 0;
+}
+.foo-author-info .name em{
+    font-size: 13px;
+    margin-left: 10px;
+    color: #909090;
+    font-weight: normal;
+}
+.foo-author-info img{
+    margin-left: 8px;
+    position: relative;
+    top: 2px;
+}
+ .foo-info-list{
+    height: 21px;
+    line-height: 10px;
+    color: #909090;
+    font-size:13px ;
+    margin-top: 3px;
+}
+
+
+.footer-author-box .guanz-author{
+    padding:0 16px;
+    height: 26px;
+    text-align: center;
+    line-height: 27px;
+    margin-top: 8px;
+    border:1px solid #6cbd45 ;
+    /* background-color: #6cbd45; */
+    border-radius: 3px;
+    /* color: white; */
+    font-size: 13px;
+
+    /* 未关注时 */
+    color:  #6cbd45;
+    background-color: #fff;
+}
+/* 安装插件 */
+.article-banner{
+    margin-bottom: 30px;
+    padding-left: 24px;
+    height: 63px;
+    border-left: 6px solid #ccc;
+    background-color: #fff;
+}
+.article-banner .title{
+    font-size: 16px;
+    color: #007fff;
+}
+.article-banner .detail{
+    font-size: 13px;
+    margin-top: 3px;
+    color: #909090;
+}
+/* 评论 */
+.comment-form{
+    padding: 12px 16px;
+    margin: 0 20px 16px;
+    /* height: 38px;
+    line-height: 38px; */
+    background-color: #fafbfc;
+}
+.comment-form img{
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    margin-top: 4px;
+    border-radius: 50%;
+}
+.comment-form .input{
+    color: rgb(134, 134, 134);
+    /* float: left; */
+    display: inline-block;
+    padding: 7px 14px;
+    width: 500px;
+    border: 1px solid #ccc;
+    min-height: 22px;
+    line-height: 22px;
+    font-size: 14px;
+    border-radius: 3px;
+    /* white-space: normal; */
+    /* word-break:normal; */
+}
+.when-com img{
+    margin-left: 40px;
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    float: left;
+    margin-top: 12px;
+    margin-right: 3px;
+}
+.when-com{
+    overflow: hidden;
+    height: 36px;
+    line-height: 45px;
+    font-size: 13px;
+    color: #027fff;
+}
+.com-but{
+    width: 30px;
+    height: 16p;
+    margin-top: 8px;
+    margin-left: 12px;
+    line-height: 16px;
+    padding: 6px 16px;
+    background-color: #027fff;
+    font-size: 15px;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+
+}
+.when-com .kjj{
+    color: #c2c2c2;
+    font-size: 14px;
+}
+/* 评论list区 */
+.comment{
+    margin-left: 80px;
+    overflow: hidden;
+}
+
+.comment-ava{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.item-right{
+   width: 512px;
+   margin-left: 10px;
+}
+.com-top-box{
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.com-top-box img{
+    position: relative;
+    top: 2px;
+    margin-left: 6px;
+}
+.com-top-box .position{
+    margin: 0 8px;
+    font-size: 13px;
+    color: #8a9aa9;
+}
+.com-content{
+    font-size: 13px;
+    width: 512px;
+    max-height: 84px;
+    overflow: hidden;   
+    text-overflow: ellipsis;
+    display: -webkit-inline-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+.see-more{
+    height: 22px;
+    width: 512px;
+    color:#007fff;
+    margin-top: 3px;
+    font-size: 13px;
+}
+.see-more-btn{
+    padding: 2px;
+}
+.item-btn{
+    height: 23px;
+    margin-left: 43px;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #8a9aa9;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(148, 148, 148);
+}
+.item-btn .zan{
+    margin-right: 30px;
+}
+.icon-cai-copy{
+    font-size: 17px;
+}
+.cai{
+    margin-right: 25px;
+}
+.com-cai-num{
+    position: relative;
+    top: -1px;
+}
+.item-btn em{
+    font-size: 12px;
+    padding: 0 6px;
+}
+/* 回复 */
+.reply-box{
+    margin-bottom: 12px;
+    margin-left: 43px;
+    padding-left: 12px;
+    background-color: #fafbfc;
+}
+
+
+.reply-ava{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.item-right{
+   width:466px;
+   margin-left: 10px;
+}
+.rep-top-box{
+    margin-top: 2px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.rep-top-box img{
+    position: relative;
+    top: 2px;
+    margin-left: 6px;
+}
+.rep-top-box .position{
+    margin: 0 8px;
+    font-size: 13px;
+    color: #8a9aa9;
+}
+.rep-content{
+    font-size: 13px;
+    width: 466px;
+    max-height: 84px;
+    overflow: hidden;   
+    text-overflow: ellipsis;
+    display: -webkit-inline-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+.see-more{
+    height: 22px;
+    width: 512px;
+    color:#007fff;
+    margin-top: 3px;
+    font-size: 13px;
+}
+.see-more-btn{
+    padding: 2px;
+}
+.item-btn{
+    height: 23px;
+    margin-left: 43px;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #8a9aa9;
+}
+.item-btn .zan{
+    margin-right: 30px;
+}
+.icon-cai-copy{
+    font-size: 17px;
+}
+.cai{
+    margin-right: 25px;
+}
+.com-cai-num{
+    position: relative;
+    top: -1px;
+}
+.item-btn em{
+    font-size: 12px;
+    padding: 0 6px;
+}
+.width{
+    width: 700px;
+    float: left; 
+}
+.recomend{
+    padding: 16px 24px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid #ccc;
+}

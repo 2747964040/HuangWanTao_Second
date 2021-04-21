@@ -1,0 +1,379 @@
+.person-main-page {
+    width: 100%;
+}
+
+.person-top-nav-box {
+    background-color: #fff;
+    /* 固定在屏幕的上方，而不会岁页滚动被卷走 */
+    /* 设置当滚动到一定程度时，再固定在顶部，同时原本顶部d动态隐藏 */
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+    width: 100%;
+    height: 50px;
+
+    color: #71777c;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    /* display: none; */
+}
+
+.person-top-nav {
+    height: 50px;
+    line-height: 50px;
+}
+
+.person-top-nav li{
+    font-size: 14px;
+    float: left;
+    width: 70px;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 16px;
+    height: 50px;
+}
+.person-top-nav ul .current,
+.per-bo-top-list .current{
+    height: 49px;
+    border-bottom: 2px solid #0876e4;
+}
+.person-top-nav ul .current a,
+.per-bo-top-list .current a
+{
+    color: #0876e4 !important;
+}
+.person-top-nav li a,
+.per-body-left-box li a{
+    color: black;
+}
+.person-top-nav li a:hover,
+.per-body-left-box li a:hover
+{
+    color: rgb(173, 171, 171);
+}
+.person-top-nav .per-ava-con{
+    padding: 0; 
+}
+.person-top-nav img{
+    margin-top: 8px;
+    margin-bottom: -8px;
+}
+.love-num{
+    color: rgb(173, 171, 171);
+}
+.love-icon{
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-left: 5px;
+    border: 5px solid transparent;
+    border-top: 5px solid rgba(168, 168, 168, 0.815);
+}
+
+
+
+.edit-person-info {
+    padding: 0;
+    width: 112px;
+    height: 32px;
+    margin: 8px 0;
+    text-align: center;
+    line-height: 32px;
+    font-size: 16px;
+    color: #007fff;
+    padding: 0 2px;
+    border: 1px solid #007fff;
+    border-radius: 3px;
+}
+
+.main-top-nav .current {
+    color: #037cf6;
+}
+
+/* 主体部分 */
+
+/* 主体左侧 */
+
+.person-body-box {
+    margin-top: 20px;
+    height: 2000px;
+}
+
+.per-body-left-box {
+    float: left;
+    width: 708px;
+    height: 100%;
+}
+
+.main-body-right-box {
+    float: right;
+    width: 240px;
+}
+
+.per-card-box {
+    margin-bottom: 10px;
+    height: 92px;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    background-color: #fff;
+}
+
+.per-ava-con {
+    width: 110px;
+    height: 100%;
+    float: left;
+    text-align: center;
+}
+
+.per-ava-con img {
+    border-radius: 50%;
+}
+
+.center-info {
+    width: 400px;
+    padding-left: 15px;
+}
+
+.center-info .nickname {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.center-info .job-a-skill {
+    width: 400px;
+    height: 29px;
+    line-height: 31px;
+    font-size: 15px;
+    color: #007fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.right-info {
+    height: 100%;
+    width: 122px;
+}
+
+.per-icon-list {
+    overflow: hidden;
+    height: 40px;
+    margin-bottom: 4px;
+}
+
+.per-icon-list i {
+    float: right;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.per-bo-top-list {
+    height:50px;
+    line-height: 50px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.per-bo-top-list li {
+    float: left;
+    width: 70px;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 16px;
+    height: 50px;
+}
+
+
+.active-item {
+    cursor: pointer;
+    height: 260px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+.item-top {
+    padding: 0 20px;
+    height: 42px;
+    line-height: 42px;
+    border-bottom: 1px solid #ccc;
+    font-size: 13px;
+    color: #8a9aa9;
+}
+
+.item-top em {
+    color: #17181a;
+    margin-right: 5px;
+}
+
+.cen-author-box {
+    height: 48px;
+    padding: 0 20px;
+    padding-top: 20px;
+}
+
+.aut-ava-con img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.thor-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    padding-top: 4px;
+    margin-bottom: 2px;
+}
+
+.item-about li {
+    float: left;
+    margin-right: 8px;
+    font-size: 13px;
+    color: #8a9aa9;
+}
+
+.guanz-thor {
+    height: 48px;
+}
+
+.guanz-thor span {
+    display: inline-block;
+    margin-top: 11px;
+    text-align: center;
+    line-height: 26px;
+    width: 55px;
+    height: 26px;
+    border-radius: 3px;
+    border: 1px solid yellowgreen;
+    color: yellowgreen;
+}
+
+.active-item:hover {
+    background-color: #fcfcfc;
+}
+
+.item-detail-con {
+    height: 100px;
+    margin-left: 74px;
+    padding-right: 20px;
+}
+
+.item-detail-con .item-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-detail-con .item-detail {
+    height: 65px;
+    margin-top: 12px;
+    position: relative;
+}
+
+.item-detail-con .detail-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 15px;
+    color: 5c6066;
+    padding-right: 64px;
+}
+
+.item-detail-con .detail-img {
+    position: absolute;
+    right: 0px;
+    top: 0;
+}
+
+.item-bot {
+    border-top: 1px solid #ccc;
+    height: 34px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.item-bot li {
+    float: left;
+    width: 33.33%;
+    height: 24px;
+    margin-top: 5px;
+    line-height: 24px;
+    text-align: center;
+    margin-right: -1px;
+    border-right: 1px solid #ccc;
+}
+
+.item-bot li:last-of-type {
+    margin-right: 0px;
+    border-right: 0;
+}
+
+.item-bot li em {
+    padding-left: 5px;
+}
+
+/* 主体右侧内容 */
+
+.guanzhu-box {
+    width: 100%;
+    height: 75px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgb(0, 0, 0, 0.2);
+}
+
+.guanzhu-box li {
+    cursor: pointer;
+    float: left;
+    width: 50%;
+    height: 40px;
+    /* line-height:60px; */
+    margin-top: 13px;
+    text-align: center;
+    border-right: 1px solid rgb(218, 216, 216);
+    margin-right: -1px;
+    font-size: 16px;
+    color: #31445b;
+
+}
+
+.guanzhu-box li:last-of-type{
+    border-right: 0;
+    margin-right: 0px;
+}
+.gz-num {
+    font-weight: 600;
+    padding: 1px 0;
+}
+
+.asider-more-box {
+    width: 100%;
+    margin-top: 10px;
+    height: 152px;
+    border-top: 1px solid #ccc;
+}
+.asider-more-box li{
+    height: 18px;
+    line-height: 18px;
+    padding: 15px 5px;
+    border-bottom: 1px solid #ccc;
+    font-size: 15px;
+    color: black;
+}
+.asider-more-box li em{
+    float: right;
+}
