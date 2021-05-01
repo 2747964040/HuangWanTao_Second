@@ -28,9 +28,9 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="Top">
         <!-- 顶部导航栏 -->
-        <div class="head-box" style="display: block;">
+        <div class="head-box" style="display: none ;" id="headBox">
             <div class="cent">
                 <!-- 左侧logo -->
                 <a href="index.html" class="logo-con fl">
@@ -68,14 +68,16 @@
                             <li class="avatar-con" style="display: none;">
                                 <i class="iconfont icon-lingdang fl"></i>
                                 <div class="avatar-img-con fr">
-                                    <img src="imgs/avatar.png" alt="头像" width="30px" height="30px" class="head-ava">
+                                    <img src="imgs/avatar.png" alt="头像" width="30px" height="30px" class="head-ava"
+                                        style="border-radius: 50%;">
                                     <!-- 点击头像下拉框 -->
                                     <div class="nav-dropdown-list" style="display: none;">
                                         <div class="drop-group"><a href="#" id="write"><i
                                                     class="iconfont icon-combinedshapecopy2"></i><span>写文章</span></a>
                                             <a href="#"><i class="iconfont icon-caogao"></i><span>草稿</span></a>
                                         </div>
-                                        <div class="drop-group"> <a href="#" id="my-page"><i
+                                        <div class="drop-group">
+                                            <a href="#" id="my-page"><i
                                                     class="iconfont icon-wode"></i><span>我的主页</span></a>
                                             <a href="#"><i class="iconfont icon-dianzan"></i><span>我赞过的</span></a>
                                             <a href="#"><i class="iconfont icon-CombinedShape"></i><span>我的小册</span></a>
@@ -83,7 +85,8 @@
                                             <a href="#"><i class="iconfont icon-biaoqian"></i><span>标签管理</span></a>
                                         </div>
                                         <div class="drop-group"> <a href="#"><i
-                                                    class="iconfont icon-penRuler-fill"></i><span>文学</span></a></div>
+                                                    class="iconfont icon-penRuler-fill"></i><span>文学</span></a>
+                                        </div>
                                         <div class="drop-group"> <a href="#"><i
                                                     class="iconfont icon-shezhi"></i><span>设置</span></a>
                                             <a href="#"><i class="iconfont icon-guanyu"></i><span>关于</span></a>
@@ -96,15 +99,23 @@
                                 </div>
                             </li>
                             <!-- 未登陆 -->
-                            <li id="beforeLogin"><a href="#" class="login-btn">登陆</a></li>
+                            <li id="beforeLogin"><a href="#" class="login-btn" style="display: blcok;">登陆</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
-
         </div>
-        <!-- 主体部分 -->
-        <div class="mian-body-box" style="display: block;">
+        <!-- 窗口右侧底部的导航栏 -->
+        <div class="window-leftbot-nav" id="winLefNav">
+            <div class="toTop"><a href="#Top"><i class="iconfont icon-huidaodingbu"></i></a></div>
+            <!-- 回退 -->
+            <div id="Back">B</div>
+            <!-- 回到主页 -->
+            <div id="ToMain">M</div>
+            <div class="huikui"><i class="iconfont icon-yijianfankui01"></i></div>
+        </div>
+        <!-- 主页面 -->
+        <div class="mian-body-box" style="display: none;" id="mainBodyBox">
             <!-- 主体顶部导航 -->
             <div class="main-top-nav">
                 <ul class="cent">
@@ -135,7 +146,7 @@
                     </ul>
                     <!-- 文章区 -->
                     <ul class="body-content-con">
-                        <li class="contnet-item">
+                        <!-- <li class="contnet-item">
                             <a href="#">
                                 <ul class="content-info-list">
                                     <li class="content-writer"><a href="#">进击的丸子</a></li>
@@ -144,7 +155,7 @@
                                     <li class="poiont">·</li>
                                     <li class="content-about"><a href="#">前端</a></li>
                                 </ul>
-                                <div class="content-title">从一次简单的http远程调用设计来看代码功力</div>
+                                <div class="hwt content-title">从一次简单的http远程调用设计来看代码功力</div>
                                 <ul class="coentent-bot-bools">
                                     <li class="bot-tool-dianz"><i class="iconfont icon-dianzan"></i><em>16</em></li>
                                     <li class="bot-tool-dianz1"><i class="iconfont icon-dianzan1"></i></li>
@@ -153,133 +164,127 @@
                                 </ul>
                                 <img src="imgs/contentimg.png" alt="文章配图">
                             </a>
-                        </li>
-                        <li class="contnet-item">
-                            <a href="#">
-                                <ul class="content-info-list">
-                                    <li class="content-writer"><a href="#">进击的丸子</a></li>
-                                    <li class="poiont">·</li>
-                                    <li class="content-date">20小时前</li>
-                                    <li class="poiont">·</li>
-                                    <li class="content-about"><a href="#">前端</a></li>
-                                </ul>
-                                <div class="content-title">
-                                    从一次简单的http远程调用设计来看代码功力从一次简单的http远程调用设计来看代码功力从一次简单的http远程调用设计来看代码功力</div>
-                                <ul class="coentent-bot-bools">
-                                    <li class="bot-tool-dianz"><i class="iconfont icon-dianzan"></i><em>16</em></li>
-                                    <li class="bot-tool-pingl"><i class="iconfont icon-pinglun"></i></li>
-                                    <li class="bot-tool-fenx"><i class="iconfont icon-fenxiang"></i></li>
-                                </ul>
-                                <img src="imgs/contentimg.png" alt="文章配图">
-                            </a>
-                        </li>
+                        </li> -->
                     </ul>
+                    <!-- 加载内容 -->
+                    <div class="loading" style="display: block;" id="mainLoading"><img src="imgs/loading.gif" alt="无内容"
+                            height="51px" style="margin-top: 50px;"></div>
+                    <!-- 内容为空 -->
+                    <div class="pleaseLogin" style="display: none;">登陆查看内容</div>
+                    <div class="nothing" style="display: none;" id="mainNothing"><img src="imgs/smdmy.png" alt="无内容">
+                    </div>
                 </div>
+                <!-- 右侧 -->
                 <div class="main-body-right-box">
                     <div class="body-right-banner-img-con">
-                        <a href="#" class="banner-img-top">
-                            <img src="imgs/aside-guangg1.image" alt="广告" width="240px" height="200px">
-                            <em>广告</em>
-                        </a>
-                        <a href="#" class="offer-guangg">
-                            <img src="imgs/aside-guangg2.png" alt="offer广告" width="240px" height="85px">
-                        </a>
-                        <div class="download-clident-box">
-                            <img src="imgs/aside-code.png" alt="客户端二维码" width="50px" height="50px">
-                            <div class="download-c-text">
-                                <div>下载掘金客户端</div>
-                                <em>解锁更多技术团队热招职位</em>
+                        <div id="TopGg" style="transition: all 0.4s;">
+                            <a href="#" class="banner-img-top">
+                                <img src="imgs/aside-guangg1.image" alt="广告" width="240px" height="200px">
+                                <em>广告</em>
+                            </a>
+                            <a href="#" class="offer-guangg">
+                                <img src="imgs/aside-guangg2.png" alt="offer广告" width="240px" height="85px">
+                            </a>
+                            <div class="download-clident-box">
+                                <img src="imgs/aside-code.png" alt="客户端二维码" width="50px" height="50px">
+                                <div class="download-c-text">
+                                    <div>下载掘金客户端</div>
+                                    <em>解锁更多技术团队热招职位</em>
+                                </div>
                             </div>
                         </div>
-                        <div class="author-rank">
-                            <div class="rank-title">作者榜</div>
-                            <ul class="rank-detail">
-                                <li><a href="#"><img class="author-ava" src="imgs/aside-ava.image" alt="作者头像"
-                                            width="45px" height="45px">
-                                        <div class="author-info fr">
-                                            <div class="name">你好你好团队<img src="imgs/lv6.svg" alt="lv-6"></div>
-                                            <div class="author-detail">前端 @ 微信 sshunlight 交个朋友吧</div>
-                                        </div>
-                                    </a></li>
-                                <li><a href="#"><img class="author-ava" src="imgs/aside-ava.image" alt="作者头像"
-                                            width="45px" height="45px">
-                                        <div class="author-info fr">
-                                            <div class="name">你好你好团队<img src="imgs/lv6.svg" alt="lv-6"></div>
-                                            <div class="author-detail">前端 @ 微信 sshunlight 交个朋友吧</div>
-                                        </div>
-                                    </a></li>
-                                <li><a href="#"><img class="author-ava" src="imgs/aside-ava.image" alt="作者头像"
-                                            width="45px" height="45px">
-                                        <div class="author-info fr">
-                                            <div class="name">你好你好团队<img src="imgs/lv6.svg" alt="lv-6"></div>
-                                            <div class="author-detail">前端 @ 微信 sshunlight 交个朋友吧</div>
-                                        </div>
-                                    </a></li>
+                        <div id="BotInfo">
+                            <div class="author-rank">
+                                <div class="rank-title">作者榜</div>
+                                <ul class="rank-detail">
+                                    <li><a href="#"><img class="author-ava" src="imgs/aside-ava.image" alt="作者头像"
+                                                width="45px" height="45px">
+                                            <div class="author-info fr">
+                                                <div class="name">你好你好团队<img src="imgs/lv6.svg" alt="lv-6"></div>
+                                                <div class="author-detail">前端 @ 微信 sshunlight 交个朋友吧</div>
+                                            </div>
+                                        </a></li>
+                                    <li><a href="#"><img class="author-ava" src="imgs/aside-ava.image" alt="作者头像"
+                                                width="45px" height="45px">
+                                            <div class="author-info fr">
+                                                <div class="name">你好你好团队<img src="imgs/lv6.svg" alt="lv-6"></div>
+                                                <div class="author-detail">前端 @ 微信 sshunlight 交个朋友吧</div>
+                                            </div>
+                                        </a></li>
+                                    <li><a href="#"><img class="author-ava" src="imgs/aside-ava.image" alt="作者头像"
+                                                width="45px" height="45px">
+                                            <div class="author-info fr">
+                                                <div class="name">你好你好团队<img src="imgs/lv6.svg" alt="lv-6"></div>
+                                                <div class="author-detail">前端 @ 微信 sshunlight 交个朋友吧</div>
+                                            </div>
+                                        </a></li>
+                                </ul>
+                                <div class="all-rank"><a><em>完整表单</em><i></i></a></div>
+                            </div>
+                            <!-- 指南 -->
+                            <ul class="aside-tools">
+                                <li><a href="#"><img src="imgs/guangg-ava.png" alt=""><em>掘金社区漫游指南</em></a></li>
+                                <li><a href="#"><img src="imgs/guangg-ava.png" alt=""><em>掘金社区漫游指南</em></a></li>
+                                <li><a href="#"><img src="imgs/guangg-ava.png" alt=""><em>掘金社区漫游指南</em></a></li>
                             </ul>
-                            <div class="all-rank"><a><em>完整表单</em><i></i></a></div>
+                            <ul class="asider-bot-text">
+                                <li class="bot-item">
+                                    <ul class="bot-about">
+                                        <li><a>关于</a></li>
+                                        <li>·</li>
+                                        <li><a>营业执照</a></li>
+                                        <li>·</li>
+                                        <li><a>友情链接</a></li>
+                                    </ul>
+                                </li>
+                                <li class="bot-item">
+                                    <ul class="bot-about">
+                                        <li><a>关于</a></li>
+                                        <li>·</li>
+                                        <li><a>营业执照</a></li>
+                                        <li>·</li>
+                                        <li><a>友情链接</a></li>
+                                    </ul>
+                                </li>
+                                <li class="bot-item">
+                                    <a href="#">京ICP备18012699号-3</a>
+                                </li>
+                                <li class="bot-item">
+                                    <a href="#">京ICP备18012699号-3</a>
+                                </li>
+                                <li class="bot-item">
+                                    版权所有：京ICP备18012699号-3
+                                </li>
+                                <li class="bot-item">
+                                    公式地址：京ICP备18012699号-3京ICP备18012699号-3
+                                </li>
+                                <li class="bot-item">
+                                    公司主机：010-31231231
+                                </li>
+                                <li class="bot-item">
+                                    举报邮箱：<a>京ICP备18012699号-3</a>
+                                </li>
+                                <li class="bot-item"><a>©2021 掘金</a></li>
+                                <li class="bot-item">
+                                    <ul class="bot-login">
+                                        <li><a href="#"><i class="iconfont icon-weibo"></i></a></li>
+                                        <li><a href="#"><i class="iconfont icon-weixin"></i></a>
+                                            <div class="bot-code">
+                                                <div>微信扫一扫</div>
+                                                <img src="imgs/aside-code.png" alt="微信二维码" width="105px" height="105px">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="aside-tools">
-                            <li><a href="#"><img src="imgs/guangg-ava.png" alt=""><em>掘金社区漫游指南</em></a></li>
-                            <li><a href="#"><img src="imgs/guangg-ava.png" alt=""><em>掘金社区漫游指南</em></a></li>
-                            <li><a href="#"><img src="imgs/guangg-ava.png" alt=""><em>掘金社区漫游指南</em></a></li>
-                        </ul>
-                        <ul class="asider-bot-text">
-                            <li class="bot-item">
-                                <ul class="bot-about">
-                                    <li><a>关于</a></li>
-                                    <li>·</li>
-                                    <li><a>营业执照</a></li>
-                                    <li>·</li>
-                                    <li><a>友情链接</a></li>
-                                </ul>
-                            </li>
-                            <li class="bot-item">
-                                <ul class="bot-about">
-                                    <li><a>关于</a></li>
-                                    <li>·</li>
-                                    <li><a>营业执照</a></li>
-                                    <li>·</li>
-                                    <li><a>友情链接</a></li>
-                                </ul>
-                            </li>
-                            <li class="bot-item">
-                                <a href="#">京ICP备18012699号-3</a>
-                            </li>
-                            <li class="bot-item">
-                                <a href="#">京ICP备18012699号-3</a>
-                            </li>
-                            <li class="bot-item">
-                                版权所有：京ICP备18012699号-3
-                            </li>
-                            <li class="bot-item">
-                                公式地址：京ICP备18012699号-3京ICP备18012699号-3
-                            </li>
-                            <li class="bot-item">
-                                公司主机：010-31231231
-                            </li>
-                            <li class="bot-item">
-                                举报邮箱：<a>京ICP备18012699号-3</a>
-                            </li>
-                            <li class="bot-item"><a>©2021 掘金</a></li>
-                            <li class="bot-item">
-                                <ul class="bot-login">
-                                    <li><a href="#"><i class="iconfont icon-weibo"></i></a></li>
-                                    <li><a href="#"><i class="iconfont icon-weixin"></i></a>
-                                        <div class="bot-code">
-                                            <div>微信扫一扫</div>
-                                            <img src="imgs/aside-code.png" alt="微信二维码" width="105px" height="105px">
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
                     </div>
 
                 </div>
             </div>
         </div>
         <!-- 登陆弹窗 -->
-        <div class="login-bgc">
+        <div class="login-bgc" id="loginBgc">
             <div class="login-box">
                 <img src="imgs/login.png" alt="熊猫" class="login-img">
                 <img src="imgs/login2.png" alt="熊猫" class="login-img-sec">
@@ -324,7 +329,7 @@
                         </ul>
                     </li>
                     <li class="form-item" id="comfirmNumBox"><input type="text" value="" placeholder="验证码"
-                            id="confirmNum"><em class="get-confirm-num fr">获取验证码</em></li>
+                            id="confirmNum" autocomplete="off"><em class="get-confirm-num fr">获取验证码</em></li>
                     <li class="login form-item">登陆</li>
                 </ul>
                 <div class="by-other-way" style="display: block;">其他登陆方式</div>
@@ -348,19 +353,34 @@
             </div>
         </div>
         <!-- 个人主页 -->
-        <div class="person-main-page" style="display: none;">
-            <div class="person-top-nav-box">
+        <div class="person-main-page" style="display:none;" id="perMainPage">
+            <div class="person-top-nav-box" style="display: none;">
                 <div class="person-top-nav cent">
+                    <div class="per-ava-con" id="perNavCon">
+                        <img src="imgs/avatar.png" alt="头像" width="34px" height="34px" id="perNavImg">
+                    </div>
                     <ul class="fl">
-                        <li class="per-ava-con"><img src="imgs/avatar.png" alt="头像"></li>
-                        <li class="current"><a href="#">动态</a></li>
-                        <li><a href="#">文章</a></li>
-                        <li><a href="#">沸点</a></li>
-                        <li><a href="#">赞<em class="love-num">11</em><i class="love-icon"></i></a></li>
-                        <li><a href="#">小册</a></li>
-                        <li><a href="#">更多<i class="love-icon"></i></a></li>
+                        <li class="current" id="active">动态</li>
+                        <li id="per-nav-wenz">文章</li>
+                        <li id="feidian">沸点</li>
+                        <li class="per-nav-zan" id="per-nav-zan">赞<em class="per-love-num">0</em><i
+                                class="love-icon"></i>
+                            <div class="per-nav-drop" id="zanDrop" style="display: none;">
+                                <div class="triangle"></div>
+                                <div class="item" id="dropWenz">文章<span class="per-love-num">11</span></div>
+                                <div class="item">沸点<span>0</span></div>
+                            </div>
+                        </li>
+                        <li id="xiaoc">小册</li>
+                        <li class="per-nav-zan" id="per-nav-more">更多<i class="love-icon"></i>
+                            <div class="per-nav-drop" id="moreDrop" style="display: none;">
+                                <div class="triangle"></div>
+                                <div class="item" id="dropCollect">收藏集</div>
+                                <div class="item" id="dropGuanz">关注</div>
+                            </div>
+                        </li>
                     </ul>
-                    <div class="edit-person-info fr">编辑个人资料</div>
+                    <div class="edit-person-info fr" id="editPerInfo">编辑个人资料</div>
                 </div>
             </div>
             <!-- 主体内容- -->
@@ -370,12 +390,11 @@
                     <!-- 个人信息板块 -->
                     <div class="per-card-box ">
                         <div class="per-ava-con fl">
-                            <img src="imgs/avatar.png" alt="头像" width="90px" height="90px">
+                            <img src="imgs/avatar.png" alt="头像" width="90px" height="90px" id="perBigNav">
                         </div>
                         <ul class="center-info fl">
-                            <li class="nickname">FOR</li>
-                            <li class="job-a-skill">+ 你从事什么职业？</li>
-                            <li class="job-a-skill">+ 你的武器库有哪些武 ( ji ) 器 ( shu ) ?</li>
+                            <li class="nickname" id="perNickName">FOR</li>
+                            <li class="job-a-skill" id="perInfo">+ 你从事什么职业？</li>
                         </ul>
                         <ul class="right-info fr">
                             <div class="per-icon-list">
@@ -388,87 +407,109 @@
                     </div>
                     <!-- 左侧顶部导航 -->
                     <ul class="per-bo-top-list">
-                        <li class="current"><a href="#">动态</a></li>
-                        <li><a href="#">文章</a></li>
-                        <li><a href="#">沸点</a></li>
-                        <li><a href="#">赞<em class="love-num">11</em><i class="love-icon"></i></a></li>
-                        <li><a href="#">小册</a></li>
-                        <li><a href="#">更多<i class="love-icon"></i></a></li>
+                        <li class="current" id="active">动态</li>
+                        <li id="per-nav-wenz">文章</li>
+                        <li id="feidian">沸点</li>
+                        <li class="per-nav-zan" id="per-nav-zan">赞<em class="per-love-num">0</em><i
+                                class="love-icon"></i>
+                            <div class="per-nav-drop" id="zanDrop" style="display: none;">
+                                <div class="triangle"></div>
+                                <div class="item" id="dropWenz">文章<span class="per-love-num">0</span></div>
+                                <div class="item">沸点<span>0</span></div>
+                            </div>
+                        </li>
+                        <li id="xiaoc">小册</li>
+                        <li class="per-nav-zan" id="per-nav-more">更多<i class="love-icon"></i>
+                            <div class="per-nav-drop" id="moreDrop" style="display: none;">
+                                <div class="triangle"></div>
+                                <div class="item" id="dropCollect">收藏集</div>
+                                <div class="item" id="dropGuanz">关注</div>
+                            </div>
+                        </li>
                     </ul>
                     <!-- 文章区 (头像悬停弹窗，点击评论出现。。。)-->
-                    <ul class="body-active-con">
-                        <li class="active-item">
-                            <div class="item-top"><em class="who">FOR</em>赞了这篇文章</div>
-                            <div class="item-center">
-                                <ul class="cen-author-box">
-                                    <li class="aut-ava-con fl"><img src="imgs/avatar.png" alt="头像" width="45px"
-                                            height="45px"></li>
-                                    <li class="thor-name-con fl">
-                                        <div class="thor-name ">业值陈</div>
-                                        <ul class="item-about">
-                                            <li>Android 开发</li>
-                                            <li>·</li>
-                                            <li>14小时前</li>
-                                        </ul>
-                                    </li>
-                                    <li class="guanz-thor fr"><span>关注</span></li>
+                    <div>
+                        <!-- 动态 -->
+                        <ul id="activeList">
+                            <li class="active-item" style="display: block;">
+                                <div class="item-top"><em class="who">FOR</em>赞了这篇文章</div>
+                                <div class="item-center">
+                                    <ul class="cen-author-box">
+                                        <li class="aut-ava-con fl"><img src="imgs/avatar.png" alt="头像" width="45px"
+                                                height="45px"></li>
+                                        <li class="thor-name-con fl">
+                                            <div class="thor-name ">业值陈</div>
+                                            <ul class="item-about">
+                                                <li>Android 开发</li>
+                                                <li>·</li>
+                                                <li>14小时前</li>
+                                            </ul>
+                                        </li>
+                                        <li class="guanz-thor fr"><span>关注</span></li>
+                                    </ul>
+                                    <ul class="item-detail-con">
+                                        <li class="item-title">简单聊聊BITmap的一些知识</li>
+                                        <li class="item-detail">
+                                            <div class="detail-text fl">简单聊聊BITmap的一些知识简单聊聊BITmap的一
+                                                些聊知识简单 些知识简单知识简单 些知识简单知识简单 些知识简单聊BITmap的一 些知识简单聊聊BITmap的一聊聊BITmap的一
+                                            </div>
+                                            <div class="detail-img"><img src="imgs/contentimg.png" alt="" width="65px"
+                                                    height="65px"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <ul class="item-bot">
+                                    <li><i class="iconfont icon-dianzan"></i><em>7</em></li>
+                                    <li><i class="iconfont icon-huifu"></i><em>评论</em></li>
+                                    <li><i class="iconfont icon-fenxiang"></i><em>分享</em></li>
                                 </ul>
-                                <ul class="item-detail-con">
-                                    <li class="item-title">简单聊聊BITmap的一些知识</li>
-                                    <li class="item-detail">
-                                        <div class="detail-text fl">简单聊聊BITmap的一些知识简单聊聊BITmap的一
-                                            些聊知识简单 些知识简单知识简单 些知识简单知识简单 些知识简单聊BITmap的一 些知识简单聊聊BITmap的一聊聊BITmap的一</div>
-                                        <div class="detail-img"><img src="imgs/contentimg.png" alt="" width="65px"
-                                                height="65px"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <ul class="item-bot">
-                                <li><i class="iconfont icon-dianzan"></i><em>7</em></li>
-                                <li><i class="iconfont icon-huifu"></i><em>评论</em></li>
-                                <li><i class="iconfont icon-fenxiang"></i><em>分享</em></li>
+                            </li>
+                        </ul>
+                        <!-- 其他 -->
+                        <div class="head-title" style="display: none;">
+                            <div class="left-title fl">文章</div>
+                            <ul class="right-list fr">
                             </ul>
-                        </li>
-                        <li class="active-item">
-                            <div class="item-top"><em class="who">FOR</em>赞了这篇文章</div>
-                            <div class="item-center">
-                                <ul class="cen-author-box">
-                                    <li class="aut-ava-con fl"><img src="imgs/avatar.png" alt="头像" width="45px"
-                                            height="45px"></li>
-                                    <li class="thor-name-con fl">
-                                        <div class="thor-name ">业值陈</div>
-                                        <ul class="item-about">
-                                            <li>Android 开发</li>
-                                            <li>·</li>
-                                            <li>14小时前</li>
-                                        </ul>
-                                    </li>
-                                    <li class="guanz-thor fr"><span>关注</span></li>
-                                </ul>
-                                <ul class="item-detail-con">
-                                    <li class="item-title">简单聊聊BITmap的一些知识</li>
-                                    <li class="item-detail">
-                                        <div class="detail-text fl">简单聊聊BITmap的一些知识简单聊聊BITmap的一
-                                            些聊知识简单 些知识简单知识简单 些知识简单知识简单 些知识简单聊BITmap的一 些知识简单聊聊BITmap的一聊聊BITmap的一</div>
-                                        <div class="detail-img"><img src="imgs/contentimg.png" alt="" width="65px"
-                                                height="65px"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <ul class="item-bot">
-                                <li><i class="iconfont icon-dianzan"></i><em>7</em></li>
-                                <li><i class="iconfont icon-huifu"></i><em>评论</em></li>
-                                <li><i class="iconfont icon-fenxiang"></i><em>分享</em></li>
-                            </ul>
-                        </li>
-                    </ul>
+                        </div>
+                        <ul class="per-wenz-list" style="display: block;">
+                            <!-- <li class="contnet-item">
+                                <a href="#">
+                                    <ul class="content-info-list">
+                                        <li class="content-writer"><a href="#">进击的丸子</a></li>
+                                        <li class="poiont">·</li>
+                                        <li class="content-date">20小时前</li>
+                                        <li class="poiont">·</li>
+                                        <li class="content-about"><a href="#">前端</a></li>
+                                    </ul>
+                                    <div class="   content-title">
+                                        从一次简单的http远程调用设计来看代码功力从一次简单的http远程调用设计来看代码功力从一次简单的http远程调用设计来看代码功力</div>
+                                    <ul class="coentent-bot-bools">
+                                        <li class="bot-tool-dianz"><i class="iconfont icon-dianzan"></i><em>16</em></li>
+                                        <li class="bot-tool-pingl"><i class="iconfont icon-pinglun"></i></li>
+                                        <li class="bot-tool-fenx"><i class="iconfont icon-fenxiang"></i></li>
+                                    </ul>
+
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <!-- 加载内容 -->
+                    <div class="loading" style="display: none;" id="perLoading"><img src="imgs/loading.gif" alt="无内容"
+                            height="51px" style="margin-top: 50px;"></div>
+                    <!-- 内容为空 -->
+                    <div class="nothing" style="display: none;" id="perNothing"><img src="imgs/smdmy.png" alt="无内容">
+                    </div>
                 </div>
                 <!-- 右侧区 -->
                 <div class="main-body-right-box">
+                    <ul class="person-achieve">
+                        <li class="per-ach-title">个人成就</li>
+                        <li class="get-love"><i class=" iconfont icon-dianzan"></i> 获得点赞 1</li>
+                        <li class="be-read "><i class="iconfont icon-chakan"></i> 文章被阅读 12</li>
+                    </ul>
                     <ul class="guanzhu-box">
-                        <li class="guanzhu-item">关注了<div class="gz-num">2</div>
+                        <li class="guanzhu-item">关注了<div class="gz-num">0</div>
                         </li>
-                        <!-- <li class="gz-line">|</li> -->
                         <li class="guanzhu-item">关注者<div class="gz-num">0</div>
                         </li>
                     </ul>
@@ -480,14 +521,15 @@
                 </div>
             </div>
         </div>
-        <!-- 修改个人信息 -->
-        <div class="change-my-info" style="display: none;">
+        <!-- 修改个人信息页面 -->
+        <div class="change-my-info" style="display: none;" id="chanMyInfo">
             <div class="chan-top-nav">
                 <ul class="chan-top-list cent">
-                    <li><a href="#" class="chan-return"><i class="chan-more-icon"></i><em>返回个人主页</em></a></li>
-                    <li><a href="#" class="current">个人资料</a></li>
-                    <li><a href="#">账号设置</a></li>
-                    <li><a href="#">简历管理</a></li>
+                    <li><a href="javascript:;" class="chan-return"><i class="chan-more-icon"></i><em>返回个人主页</em></a>
+                    </li>
+                    <li><a href="javascript:;" class="current">个人资料</a></li>
+                    <li><a href="javascript:;">账号设置</a></li>
+                    <li><a href="javascript:;">简历管理</a></li>
                 </ul>
             </div>
             <div class="cent">
@@ -499,39 +541,51 @@
                             <div class="chan-ava-right">
                                 <div class="ava-classify">支持 jpg , png , jpeg 格式大小 5M 以内的图片
                                 </div>
+                                <input type="file" accept="image/jpeg,image/png" id="inputAva">
                                 <button class="sub-ava">点击上传</button>
                             </div>
                         </li>
-                        <li class="chan-item"><em>用户名</em><input type="text" value="" placeholder="FOR">
-                            <ul class="chan-info-but fr">
-                                <li style="display: none;">保存</li>
-                                <li><img src="imgs/edit-ico.svg" alt="修改"><span>修改</span></li>
+                        <li class="chan-item"><em>用户名</em><input type="text" value="" placeholder="FOR" id="inputName">
+                            <ul class="chan-info-but fr" id="chanNameRight">
+                                <li style="display: none;" id="preseveName"><span class="preseve">保存</span></li>
+                                <li><img src="imgs/edit-ico.svg" alt="修改" style="display: inline-block;" id="chanNImg">
+                                    <span class="" id="chanName">修改</span>
+                                </li>
                             </ul>
                         </li>
                         <li class="chan-item"><em>职位</em><input type="text" value="" placeholder="请填写你的职位">
                             <ul class="chan-info-but fr">
-                                <li style="display: none;">保存</li>
-                                <li><img src="imgs/edit-ico.svg" alt="修改"><span>修改</span></li>
+                                <li style="display: none;"><span class="preseve">保存</span></li>
+                                <li><img src="imgs/edit-ico.svg" alt="修改" style="display: inline-block;">
+                                    <span class="">修改</span>
+                                </li>
                             </ul>
                         </li>
-                        <li class="chan-item"><em>头像</em><input type="text" value="" placeholder="请填写你的公式"
+                        <li class="chan-item"><em>公司</em><input type="text" value="" placeholder="请填写你的公司"
                                 style="width: 383px;">
                             <ul class="chan-info-but fr">
-                                <li style="display: inline-block;"><span class="preseve">保存</span></li>
-                                <li><img src="imgs/edit-ico.svg" alt="修改" style="display: none;"><span
-                                        class="cancel">取消</span></li>
+                                <li style="display: none;"><span class="preseve">保存</span></li>
+                                <li><img src="imgs/edit-ico.svg" alt="修改" style="display: inline-block;">
+                                    <span class="">修改</span>
+                                </li>
                             </ul>
                         </li>
-                        <li class="chan-item"><em>头像</em><input type="text">
+                        <li class="chan-item"><em>个人介绍</em><input type="text" value="" placeholder="填写职业技能，擅长的事情，喜欢的事情等"
+                                id="inputIntro">
                             <ul class="chan-info-but fr">
-                                <li style="display: none;">保存</li>
-                                <li><img src="imgs/edit-ico.svg" alt="修改"><span>修改</span></li>
+                                <li style="display: none;" id="perserveIntro"><span class="preseve">保存</span></li>
+                                <li><img src="imgs/edit-ico.svg" alt="修改" style="display: inline-block;"
+                                        id="chanIntroImg">
+                                    <span class="" id="chanIntro">修改</span>
+                                </li>
                             </ul>
                         </li>
-                        <li class="chan-item"><em>头像</em><input type="text">
+                        <li class="chan-item"><em>个人主页</em><input type="text" placeholder="填写你的个人主页">
                             <ul class="chan-info-but fr">
-                                <li style="display: none;">保存</li>
-                                <li><img src="imgs/edit-ico.svg" alt="修改"><span>修改</span></li>
+                                <li style="display: none;"><span class="preseve">保存</span></li>
+                                <li><img src="imgs/edit-ico.svg" alt="修改" style="display: inline-block;">
+                                    <span class="">修改</span>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -539,178 +593,77 @@
             </div>
         </div>
         <!-- 文章详情页面 -->
-        <div class="wenz-detail" style="display: none;">
+        <div class="wenz-detail" style="display: none;" id="wenzDetail">
             <!-- 文章详情内容 -->
             <div class="wenz-body-box cent">
                 <!-- 左侧内容 -->
                 <div class="wenz-body-left-box fl">
                     <div class="wenz-author-box">
-                        <img src="imgs/avatar.png" alt="头像" width="40px" height="40px" class="author-ava fl">
+                        <img src="imgs/avatar.png" alt="头像" width="40px" height="40px" class="author-ava fl"
+                            id="authorAva">
                         <ul class="wenz-author-info fl">
-                            <li class="name"><span>吃饭饭</span><img src="imgs/lv6.svg" alt="等级"></li>
+                            <li class="name"><span id="authorName">吃饭饭</span><img src="imgs/lv6.svg" alt="等级"></li>
                             <li class="date"><span>2021年04月18日</span>&nbsp;&nbsp;&nbsp;&nbsp;阅读 <em>123</em></li>
                         </ul>
-                        <button class="guanz-author fr">关注</button>
+                        <button class="guanz-author fr" id="guanzBtn">关注</button>
                     </div>
                     <div class="wenz-val">
-                        这是文章内容
+                        <h1 class="v-title"></h1>
+                        <p class="v-content"></p>
                     </div>
                     <!-- 评论区 -->
-                    <div class="wenz-pl">
+                    <div class="wenz-pl" id="PL">
+                        <!-- 文章分类 -->
                         <ul class="tag-list-box">
                             <li class="fl fir-tag">文章分类 : <span>前端</span></li>
                             <li class="fl sec-tag">文章标签 : <span class="fr">JavaScript</span> <img src="imgs/js-icon.png"
                                     alt="js"></li>
                         </ul>
+                        <!-- 底部作者框 -->
                         <div class="footer-author-box">
-                            <img src="imgs/avatar.png" alt="头像" width="40px" height="40px" class="author-ava fl">
+                            <img src="imgs/avatar.png" alt="头像" width="40px" height="40px" class="author-ava fl"
+                                id="authorAva">
                             <ul class="foo-author-info fl">
-                                <li class="name"><span>吃饭饭</span><img src="imgs/lv6.svg" alt="等级"><em>搬砖师傅 @ 赛餐CTCU</em>
+                                <li class="name"><span id="authorName">吃饭饭</span><img src="imgs/lv6.svg"
+                                        alt="等级"><em>搬砖师傅 @ 赛餐CTCU</em>
                                 </li>
                                 <li class="foo-info-list"><span class="post-num">发布了34篇专栏</span> · <span
                                         class="get-love">获得点赞 1,749</span> · <span class="be-read">获得阅读 136,009</span>
                                 </li>
                             </ul>
-                            <button class="guanz-author fr">关注</button>
+                            <button class="guanz-author fr" id="guanzBtn">关注</button>
                         </div>
+                        <!-- 插件广告 -->
                         <div class="article-banner">
                             <div class="title">安装掘金游览器插件</div>
                             <div class="detail">
                                 打开新标签页发现好内容，掘金，GitHub，Dribble, ProductHunt等站点内容轻松获取。快来安装掘金游览器插件获取高质量内容吧 ！
                             </div>
                         </div>
+                        <!-- 评论输入框 -->
                         <div class="comment-form">
-                            <img src="imgs/avatar.png" alt="头像">
-                            <div class="input">输入评论...</div>
-                            <ul class="when-com">
+                            <img src="imgs/avatar.png" alt="头像" id="comMyAva">
+                            <div class="input" placeholder="输入评论..." contenteditable="true" id="inputPl"></div>
+                            <ul class="when-com" style="display: none;" id="inputPlTools">
                                 <li class="fl"><img src="imgs/biaoq.svg" alt="表情">表情</li>
                                 <li class="com-but fr">评论</li>
                                 <li class="kjj fr">Ctrl or ⌘ + Enter</li>
                             </ul>
                         </div>
+                        <!-- 评论区内容 -->
                         <ul class="comment">
-                            <li class="comment-item">
-                                <img src="imgs/avatar.png" alt="头像" class="comment-ava fl">
-                                <div class="item-right fl">
-                                    <div class="com-top-box"><span class="name">_四喜<img src="imgs/lv6.svg"
-                                                alt=""></span><em class="position">web前端开发工程师</em></div>
-                                    <div class="com-content">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus facilis
-                                        delectus aut dicta. Voluptas dolorum magni beatae optio dicta fuga, reiciendis
-                                        velit saepe id, nisi quaerat! Molestias soluta consequatur labore. Lorem ipsum
-                                        dolor sit, amet consectetur adipisicing elit. Nobis, aliquid dolorem quaerat
-                                        consequatur similique dolores rem assumenda ea possimus, neque labore, id optio
-                                        fuga repudiandae dignissimos! Iusto eum delectus tempora!
-                                    </div>
-                                    <div class="see-more">
-                                        <span class="see-more-btn">展开</span>
-                                    </div>
-                                </div>
-                                <ul class="item-btn clearF">
-                                    <li class="fl">5小时前</li>
-                                    <li class="fr "><i class="iconfont icon-huifu"></i><em>回复</em></li>
-                                    <li class="fr cai"><i class="iconfont icon-cai-copy"></i><em
-                                            class="com-cai-num">100</em></li>
-                                    <li class="fr zan"><i class="iconfont icon-zan"></i><em class="com-love-num">1</em>
-                                    </li>
-                                </ul>
-                                <div class="reply-box clearF">
-                                    <ul class="reply-item-list">
-                                        <li class="reply-item">
-                                            <img src="imgs/avatar.png" alt="头像" class="reply-ava fl">
-                                            <div class="item-right fl">
-                                                <div class="rep-top-box"><span class="name">_四喜</span><img
-                                                        src="imgs/lv6.svg" alt=""><em class="position">web前端开发工程师</em>
-                                                </div>
-                                                <div class="rep-content">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-                                                    facilis delectus aut dicta. Voluptas dolorum magni beatae optio
-                                                    dicta fuga, reiciendis velit saepe id, nisi quaerat! Molestias
-                                                    soluta consequatur labore. Lorem ipsum dolor sit, amet consectetur
-                                                    adipisicing elit. Nobis, aliquid dolorem quaerat consequatur
-                                                    similique dolores rem assumenda ea possimus, neque labore, id optio
-                                                    fuga repudiandae dignissimos! Iusto eum delectus tempora!
-                                                </div>
-                                                <div class="see-more">
-                                                    <span class="see-more-btn">展开</span>
-                                                </div>
-                                            </div>
-                                            <ul class="item-btn clearF">
-                                                <li class="fl">5小时前</li>
-                                                <li class="fr "><i class="iconfont icon-huifu"></i><em>回复</em></li>
-                                            </ul>
-                                        </li>
-                                        <!-- 回复复制 -->
-                                        <li class="reply-item">
-                                            <img src="imgs/avatar.png" alt="头像" class="reply-ava fl">
-                                            <div class="item-right fl">
-                                                <div class="rep-top-box"><span class="name">_四喜</span><img
-                                                        src="imgs/lv6.svg" alt=""><em class="position">web前端开发工程师</em>
-                                                </div>
-                                                <div class="rep-content">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus
-                                                    facilis delectus aut dicta. Voluptas dolorum magni beatae optio
-                                                    dicta fuga, reiciendis velit saepe id, nisi quaerat! Molestias
-                                                    soluta consequatur labore. Lorem ipsum dolor sit, amet consectetur
-                                                    adipisicing elit. Nobis, aliquid dolorem quaerat consequatur
-                                                    similique dolores rem assumenda ea possimus, neque labore, id optio
-                                                    fuga repudiandae dignissimos! Iusto eum delectus tempora!
-                                                </div>
-                                                <div class="see-more">
-                                                    <span class="see-more-btn">展开</span>
-                                                </div>
-                                            </div>
-                                            <ul class="item-btn clearF">
-                                                <li class="fl">5小时前</li>
-                                                <li class="fr "><i class="iconfont icon-huifu"></i><em>回复</em></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <!-- 评论复制 -->
-                            <li class="comment-item">
-                                <img src="imgs/avatar.png" alt="头像" class="comment-ava fl">
-                                <div class="item-right fl">
-                                    <div class="com-top-box"><span class="name">_四喜<img src="imgs/lv6.svg"
-                                                alt=""></span><em class="position">web前端开发工程师</em></div>
-                                    <div class="com-content">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus facilis
-                                        delectus aut dicta. Voluptas dolorum magni beatae optio dicta fuga, reiciendis
-                                        velit saepe id, nisi quaerat! Molestias soluta consequatur labore. Lorem ipsum
-                                        dolor sit, amet consectetur adipisicing elit. Nobis, aliquid dolorem quaerat
-                                        consequatur similique dolores rem assumenda ea possimus, neque labore, id optio
-                                        fuga repudiandae dignissimos! Iusto eum delectus tempora!
-                                    </div>
-                                    <div class="see-more">
-                                        <span class="see-more-btn">展开</span>
-                                    </div>
-                                </div>
-                                <ul class="item-btn clearF">
-                                    <li class="fl">5小时前</li>
-                                    <li class="fr "><i class="iconfont icon-huifu"></i><em>回复</em></li>
-                                    <li class="fr cai"><i class="iconfont icon-cai-copy"></i><em
-                                            class="com-cai-num">100</em></li>
-                                    <li class="fr zan"><i class="iconfont icon-zan"></i><em class="com-love-num">1</em>
-                                    </li>
-                                </ul>
-                                <div class="reply-box clearF">
-                                    <ul class="reply-item-list">
-
-                                    </ul>
-                            </li>
                         </ul>
                     </div>
-
                 </div>
                 <!-- 右侧内容 -->
                 <div class="wenz-body-right-box fr">
                     <a href="#" class="banner-img-top">
                         <div class="about-author">关于作者</div>
                         <div class="left-author-info">
-                            <img src="imgs/avatar.png" alt="头像" width="50px" height="50px" class="ava fl">
+                            <img src="imgs/avatar.png" alt="头像" width="50px" height="50px" class="ava fl"
+                                id="authorAva">
                             <ul class="left-author-name fl">
-                                <li class="name"><span>吃饭饭</span><img src="imgs/lv6.svg" alt="等级"></li>
+                                <li class="name"><span id="authorName">吃饭饭</span><img src="imgs/lv6.svg" alt="等级"></li>
                                 <li class="positon">大三学生 @ 在校学生</li>
                             </ul>
                         </div>
@@ -770,22 +723,23 @@
                             </li>
                         </ul>
                     </div>
-
-
                 </div>
+                <!-- 左侧悬浮列表 -->
+                <ul class="left-tools-list">
+                    <li class="le-tools-item " id="leftLove"><i class="iconfont icon-dianzan "></i><span
+                            class="love-num ">23</span></li>
+                    <li class="le-tools-item " id="leftCai"><i class="iconfont icon-dianzan1"></i></li>
+                    <li class="le-tools-item" id="leftPl"><a href="#PL"><i class="iconfont icon-pinglun"></i><span
+                                class="pl-num">0</span></a></li>
+                    <li class="le-tools-item"><i class="iconfont icon-shoucang1"></i> </li>
+                    <li class="le-tools-item"><i class="iconfont icon-jubao"></i> </li>
+                    <li class="share">分享</li>
+                    <li class="le-tools-item"><i class="iconfont icon-weibo1"></i> </li>
+                    <li class="le-tools-item"><i class="iconfont icon-QQ"></i> </li>
+                    <li class="le-tools-item"><i class="iconfont icon-weixin1"></i> </li>
+                </ul>
             </div>
-            <!-- 左侧悬浮列表 -->
-            <ul class="left-tools-list">
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i><span class="love-num">23</span></li>
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i><span class="pl-num">10</span></li>
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i> </li>
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i> </li>
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i> </li>
-                <li class="share">分享</li>
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i> </li>
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i> </li>
-                <li class="le-tools-item"><i class="iconfont icon-dianzan"></i> </li>
-            </ul>
+
             <!-- 相关推荐 -->
             <div class="cent">
                 <ul class="body-content-con width clearF">
@@ -793,7 +747,7 @@
                         相关推荐
                     </li>
                     <li class="contnet-item">
-                        <a href="#">
+                        <a href="javascript:;">
                             <ul class="content-info-list">
                                 <li class="content-writer"><a href="#">进击的丸子</a></li>
                                 <li class="poiont">·</li>
@@ -890,15 +844,15 @@
             </div>
         </div>
         <!-- 写文章页面 -->
-        <div class="write-page" style="display: none;">
+        <div class="write-page" style="display: none;" id="writePage">
             <div class="wri-top">
                 <img src="imgs/write.png" alt="" width="26px" height="26px">
-                <input type="text" placeholder="输入文章标题...">
+                <input type="text" placeholder="输入文章标题..." id="writeTitle" autocomplete="off">
                 <ul class="wri-top-list fr">
                     <li class="draft">草稿箱</li>
-                    <li class="post">发布</li>
+                    <li class="post" style="cursor: pointer;">发布</li>
                     <li><img src="imgs/wri-r.png" alt="" class="wri-r-icon"></li>
-                    <li><img src="imgs/avatar.png" alt="" width="32px" height="32px"></li>
+                    <li><img src="imgs/avatar.png" alt="" width="32px" height="32px" id="writeAva"></li>
                 </ul>
             </div>
             <div class="wri-tools">
@@ -906,22 +860,21 @@
             </div>
             <ul class="write-area-box">
                 <li class="left-area fl">
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <textarea cols="30" rows="10" id="writeContent" value=""></textarea>
                 </li>
                 <li class="right-area fr">
-                    <pre>
+                    <pre id="showContent">
                     </pre>
                 </li>
             </ul>
             <ul class="wri-bot-list">
-                <li class="fl">字数: <em>2</em> </li>
-                <li class="fl">行数: <em>1</em> </li>
+                <li class="fl">字数: <em>0</em> </li>
+                <li class="fl">行数: <em>0</em> </li>
                 <li class="fr">回到顶部</li>
+                <li class="fr" id="wriBack">回退</li>
                 <li class="fr"><input type="checkbox">同步滚动</li>
             </ul>
         </div>
     </div>
-    </div>
 </body>
-
 </html>

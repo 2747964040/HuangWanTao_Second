@@ -1,8 +1,15 @@
 .chan-top-nav {
+    position: fixed;
+    top: 0px;
+    z-index: 99;
+
     width: 100%;
-    background-color: #fff;
     height: 46px;
     margin-top: 61px;
+
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0px rgba(10, 10, 10, 0.048);
 }
 
 .chan-top-list li a {
@@ -10,6 +17,7 @@
     width: 80px;
     text-align: center;
     line-height: 46px;
+
     float: left;
     font-size: 14px;
     color: rgb(112, 112, 112);
@@ -41,7 +49,7 @@
 }
 
 .chan-body-box {
-    margin-top: 10px;
+    margin-top: 122px;
     width: 600px;
     padding: 33px 48px;
     padding-bottom: 84px;
@@ -67,6 +75,7 @@
     margin-right: 25px;
 }
 
+
 .chan-item em {
     float: left;
     width: 120px;
@@ -80,34 +89,44 @@
     font-size: 12px;
     color: #909090;
     float: left;
+    position: relative;
 }
 
 .sub-ava {
     width: 80px;
     height: 30px;
+    line-height: 19px;
+    text-align: center;
+    padding: 6px 15px;
+    margin-top: 18px;
+
     border-radius: 2px;
     background-color: #007fff;
     color: white;
-    padding: 6px 15px;
-    margin-top: 18px;
-    text-align: center;
     font-size: 12px;
-    line-height: 19px;
+}
+
+#inputAva {
+    position: absolute;
+    top: 36px;
+    left: -2px;
+
+    width: 78px;
+    height: 30px;
+    opacity: 0;
 }
 
 .chan-item input {
-    width: 410px;
-    /* 缩小 */
-    /* width: 383px; */
-    color: #ccc;
+    width: 383px;
     height: 23px;
     line-height: 23px;
     padding: 1px 2px;
+
+    color: rgb(51, 51, 51);
     font-size: 16px;
 }
 
 .chan-info-but {
-    /* width: 52px; */
     height: 100%;
     line-height: 72px;
 }
@@ -116,17 +135,22 @@
     float: left;
     font-size: 15px;
     color: #007fff;
+    cursor: pointer;
 }
-.chan-info-but li img{
+
+.chan-info-but li img {
     position: relative;
     top: 3px;
     right: 5px;
     width: 18px;
+    cursor: default;
 }
-.chan-info-but  span{
+
+.chan-info-but span {
     height: 20px;
 }
-.chan-info-but .cancel{
+
+.chan-info-but .cancel {
     color: #666;
     margin-left: 20px;
 }

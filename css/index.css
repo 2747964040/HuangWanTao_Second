@@ -2,27 +2,30 @@
 
 .mian-body-box {
     width: 100%;
-    /* margin-top: 61px; */
+    overflow: hidden;
+    margin-bottom: 80px;
+    margin-top: 46px;
 }
 
 /* 主体顶部导航栏 */
 
 .main-top-nav {
-    background-color: #fff;
-    /* 固定在屏幕的上方，而不会岁页滚动被卷走 */
-    /* 设置当滚动到一定程度时，再固定在顶部，同时原本顶部d动态隐藏 */
-    /* position: sticky;
-    top: 0px;
-    left: 0px; */
-    /* margin-top: 61px; */
-    width: 100%;
+    position: fixed;
+    top: 60px; 
+    z-index: 1;
+
+    width: 1583px;
     height: 44px;
     line-height: 44px;
+
+    background-color: #fff;
+
     font-size: 14px;
     color: #71777c;
     border-top: 1px solid #ccc;
-    /* display: none; */
-    
+    border-bottom: 1px solid rgb(233, 232, 232);
+    box-shadow: 0 1px 2px 0 rgba(216, 216, 216, 0.575);
+    transition: all 0.2s;
 }
 
 .main-top-nav li {
@@ -49,8 +52,7 @@
 /* 主体左侧 */
 
 .main-body-box {
-    margin-top: 20px;
-    height: 2000px;
+    margin-top: 80px;
 }
 
 .main-body-left-box {
@@ -62,13 +64,17 @@
 .main-body-right-box {
     float: right;
     width: 240px;
+    transition: all 0.2s;
+    opacity: 1;
 }
 
 .body-top-list-con {
     height: 24px;
     line-height: 24px;
+
     padding: 10px;
     padding-left: 24px;
+
     font-size: 15px;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
@@ -86,16 +92,14 @@
 }
 
 .contnet-item {
-    cursor: pointer;
+    box-sizing: border-box;
     height: 116px;
     padding: 18px 24px;
     background-color: rgb(255, 255, 255);
-    box-sizing: border-box;
-    position: relative;
+    cursor: pointer;
 }
 
 .content-info-list {
-    /* display: block; */
     overflow: hidden;
 }
 
@@ -119,29 +123,31 @@
     width: 580px;
     height: 20px;
     line-height: 20px;
+
     margin-top: 6px;
     margin-bottom: 12px;
+
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
     font-size: 17px;
     font-weight: bolder;
+    color: rgb(58, 58, 58);
 }
 
 .coentent-bot-bools li {
-    /* display: inline-block; */
     float: left;
     height: 25px;
+    line-height: 24px;
     text-align: center;
     padding: 0px 10px;
-    line-height: 24px;
     border: 1px solid #ccc;
     color: rgb(165, 165, 165);
 }
 
 .coentent-bot-bools .bot-tool-dianz,
-.coentent-bot-bools .bot-tool-dianz1
- {
+.coentent-bot-bools .bot-tool-dianz1 {
     border-right: 0;
 }
 
@@ -154,17 +160,26 @@
 .coentent-bot-bools .icon-dianzan {
     font-size: 14px;
 }
-.coentent-bot-bools .icon-dianzan1{
-    font-size: 14px;
-    position: relative;
-    top: 1px;
+
+.coentent-bot-bools .like,
+.coentent-bot-bools .dislike {
+    color: #007fff;
 }
 
+.coentent-bot-bools .icon-dianzan1 {
+    position: relative;
+    top: 1px;
+    font-size: 14px;
+}
 
 .coentent-bot-bools .bot-tool-fenx {
     border-left: 0;
     font-size: 12px;
     display: none;
+}
+
+.contnet-item {
+    position: relative;
 }
 
 .contnet-item img {
@@ -190,10 +205,24 @@
     background-color: #ececec;
 }
 
+.pleaseLogin{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+
+    background-color: #fff;
+    font-size: 23px;
+    color: rgb(182, 181, 181);
+    cursor: pointer;
+}
+
 /* 主体右侧内容 */
 
 .body-right-banner-img-con {
-    width: 100px;
+    width: 100%;
+    transition: all 0.2s;
+    opacity: 1;
 }
 
 .banner-img-top {
@@ -205,14 +234,16 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
-    color: rgb(255, 255, 255);
-    border: 1px solid rgba(255, 255, 255, 0.658);
-    border-radius: 2px;
+
     width: 26px;
-    padding: 0 5px;
     height: 18px;
     text-align: center;
     line-height: 18px;
+    padding: 0 5px;
+
+    color: rgb(255, 255, 255);
+    border: 1px solid rgba(255, 255, 255, 0.658);
+    border-radius: 2px;
     background-color: rgba(0, 0, 0, 0.247);
 }
 
@@ -261,9 +292,9 @@
 
 .rank-title {
     width: 230px;
-    font-size: 15px;
     height: 40px;
     line-height: 40px;
+    font-size: 15px;
     padding-left: 10px;
     border-bottom: 1px solid #ccc;
 }
@@ -275,8 +306,8 @@
 }
 
 .rank-detail li .author-ava {
-    border-radius: 50%;
     float: left;
+    border-radius: 50%;
     margin-right: 5px;
 }
 
@@ -409,8 +440,10 @@
     top: 40px;
     left: -48px;
     z-index: 99;
+
     width: 120px;
     height: 144px;
+
     background-color: #fff;
     border: 1px solid #ccc;
     text-align: center;
@@ -428,6 +461,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 99;
     width: 100%;
     height: 100%;
     background-color: rgba(109, 109, 109, 0.39);
@@ -436,23 +470,24 @@
 
 .login-box {
     width: 274px;
-    /* height: 265px; */
-    background-color: #fff;
+    padding: 23px;
     margin: 0 auto;
+    background-color: #fff;
     border-radius: 3px;
     margin-top: 15%;
     position: relative;
-    padding: 23px;
     padding-bottom: 20px;
+    z-index: 99;
 }
 
-.login-box .login-img{
+.login-box .login-img {
     position: absolute;
     top: -84px;
     left: 31%;
     width: 40%;
 }
-.login-box .login-img-sec{
+
+.login-box .login-img-sec {
     position: absolute;
     top: -92px;
     left: 29%;
@@ -461,25 +496,25 @@
 }
 
 .phone-login {
-    cursor: default;
+    width: 100%;
     height: 30px;
+    cursor: default;
     line-height: 30px;
     font-size: 17px;
     font-weight: 600;
-    width: 100%;
 }
 
 .return-btn {
-    /* float: right; */
-    cursor: pointer;
     width: 22px;
     height: 22px;
     text-align: right;
     line-height: 20px;
+
+    margin-left: 184px;
     display: inline-block;
     font-size: 22px;
     color: rgb(167, 167, 167);
-    margin-left: 184px;
+    cursor: pointer;
 }
 
 .login-form {
@@ -491,44 +526,50 @@
     width: 253px;
     height: 39px;
     line-height: 39px;
+    padding: 0 10px;
     border-radius: 4px;
     margin-bottom: 4%;
-    padding: 0 10px; 
-       border: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
- .phone-num-box{
+
+.phone-num-box {
     position: relative;
     border: 1px solid #ccc;
-    /* border-color: blue; */
 }
-.select-list{
+
+.select-list {
+    position: absolute;
+    top: 40px;
+
     width: 210px;
     height: 183px;
     border: 1px solid #ccc;
     border-radius: 3px;
     box-shadow: -2px 3px 3px 1px rgb(231, 231, 231);
-    position: absolute;
-    top: 40px;
     overflow-y: scroll;
     overflow-x: hidden;
     left: 0;
     z-index: 88;
     background-color: #fff;
 }
-.select-item{
+
+.select-item {
     padding: 0 10px;
     font-size: 15px;
-    height:36px;
-    cursor: pointer;
+    height: 36px;
     line-height: 36px;
+    cursor: pointer;
 }
-.select-list li :hover{
+
+.select-list li :hover {
     background-color: rgb(228, 228, 228);
 }
-.select-item em{
+
+.select-item em {
     float: right;
     color: rgb(121, 120, 120);
 }
+
 .before-pn-select {
     height: 100%;
     float: left;
@@ -542,18 +583,22 @@
 }
 
 .before-pn-icon {
+    display: inline-block;
+
+    position: relative;
+    top: -3px;
+
     width: 6px;
     height: 6px;
-    display: inline-block;
+
     border-right: 1px solid rgb(180, 180, 180);
     border-bottom: 1px solid rgb(168, 168, 168);
     transform: rotate(45deg);
-    position: relative;
-    top: -3px;
     cursor: pointer;
-    transition:all .2s;
+    transition: all .2s;
 }
-.before-pn-icon2{
+
+.before-pn-icon2 {
     transform: rotate(-135deg);
     top: 0px;
 }
@@ -592,7 +637,8 @@
     color: #007fff;
     cursor: pointer;
 }
-.agreement-box{
+
+.agreement-box {
     width: 100%;
     height: 28px;
     line-height: 28px;
@@ -600,70 +646,79 @@
     color: rgb(128, 128, 128);
     cursor: default;
 }
-.agreement-box em{
+
+.agreement-box em {
     color: #007fff;
     padding: 0 5px;
     cursor: pointer;
 }
-.other-way{
+
+.other-way {
     width: 100%;
     height: 90px;
     margin-bottom: 8px;
     display: none;
 }
-.by-phone-forget{
+
+.by-phone-forget {
     width: 100%;
     overflow: hidden;
-   
 }
-.by-phone-forget li{
+
+.by-phone-forget li {
     height: 30px;
     line-height: 25px;
     font-size: 14px;
     color: #007fff;
     cursor: pointer;
 }
-.icon-list{
+
+.icon-list {
     width: 100%;
     height: 65px;
     line-height: 75px;
 }
-.icon-list li{
+
+.icon-list li {
+    display: inline-block;
     width: 45px;
     height: 45px;
     line-height: 46px;
     text-align: center;
+    margin: 0 21px;
+
     background-color: #f4f8fb;
     border-radius: 50%;
-    margin: 0 21px;
     font-size: 22px;
-    color: #d52b2a;
-    display: inline-block;
     cursor: pointer;
 }
-.icon-list .icon-weixin1{
+
+.icon-list .icon-weixin1 {
     color: green;
     margin-left: 23px;
 }
-.icon-list .icon-github2{
+
+.icon-list .icon-github2 {
     color: black;
 }
+
 /* 提示 */
-.showToast{
+
+.showToast {
     position: absolute;
-    /* display: none; */
     opacity: 0;
     top: 0px;
     right: 40px;
+
     color: white;
     font-size: 14px;
     background-color: rgb(252, 15, 15);
-    padding:10px 10px;
-    border-radius:6px;
+    padding: 10px 10px;
+    border-radius: 6px;
     transition: all 0.5s;
 }
-.showToast2{
-    /* display: block; */
+
+.showToast2 {
     opacity: 1;
     top: 50px;
 }

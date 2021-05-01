@@ -24,14 +24,9 @@ html, body {
 }
 
 .container {
-    /* width: 100%; */
     width: 1583px;
-    /* padding-right: 17px; */
     margin: 0 auto;
     position: relative;
-    /* height: 760px; */
-    /* height: 780px;
-    overflow: hidden; */
 }
 
 .clearF {
@@ -72,10 +67,18 @@ a:hover {
 /* 顶部导航 */
 
 .head-box {
-    width: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+
+    margin-bottom: -1px;
+    width: 1583px;
     height: 60px;
+    border-bottom: 1px solid #ccc;
+
     color: #909090;
     background-color: #fff;
+    transition: all 0.2s;
 }
 
 .logo-con {
@@ -121,11 +124,12 @@ a:hover {
 .head-search-innercon {
     display: inline-block;
     height: 31px;
-    border: 1px solid rgb(231, 231, 231);
-    background-color: #f8f8f8d5;
     line-height: 31px;
     padding-left: 10px;
     margin-right: 31px;
+
+    border: 1px solid rgb(231, 231, 231);
+    background-color: #f8f8f8d5;
 }
 
 .head-search-con input {
@@ -139,11 +143,12 @@ a:hover {
     display: inline-block;
     width: 20px;
     line-height: 32px;
+    text-align: center;
+
     padding: 0 5px;
     color: #c2c3c5;
     font-size: 17px;
     font-weight: 600;
-    text-align: center;
 }
 
 .head-write-innercon {
@@ -152,7 +157,6 @@ a:hover {
 }
 
 .head-write-con a {
-    /* display: inline-block; */
     float: left;
     width: 64px;
     height: 32px;
@@ -166,12 +170,11 @@ a:hover {
 }
 
 .head-write-con .more-con {
-    width: 15px;
-    /* display: inline-block; */
     float: left;
+    width: 15px;
     height: 32px;
-    margin-top: 12px;
     line-height: 33px;
+    margin-top: 12px;
     text-align: center;
     color: white;
     background-color: #007fff;
@@ -181,11 +184,12 @@ a:hover {
 }
 
 .head-write-con .more-icon {
+    position: relative;
+    top: 1px;
+
     display: inline-block;
     border: 4px solid transparent;
     border-top: 4px solid #fff;
-    position: relative;
-    top: 1px;
 }
 
 .head-avatar-innercon {
@@ -193,25 +197,23 @@ a:hover {
 }
 
 .avatar-con {
-    display: inline-block;
-    /* display: none; */
+    display: none;
 }
 
 .icon-lingdang {
     display: inline-block;
-    line-height: 60px;
-    font-size: 25px;
     width: 40px;
     height: 60px;
+    line-height: 60px;
     text-align: center;
+    font-size: 25px;
 }
 
 .avatar-img-con {
     position: relative;
     display: inline-block;
-    width: 40px;
+    width: 40px;    height: 60px;
     margin-left: 18px;
-    height: 60px;
 }
 
 .head-avatar-innercon img {
@@ -221,16 +223,16 @@ a:hover {
 }
 
 .login-btn {
-    display: inline-block;
+    display: block;
     margin-top: 11px;
     width: 70px;
     height: 31px;
+    text-align: center;
+    line-height: 31px;
     border: 1px solid #007fff;
     border-radius: 4px;
     font-size: 16px;
     color: #007fff;
-    text-align: center;
-    line-height: 31px;
 }
 
 /* 点击头像 */
@@ -239,34 +241,71 @@ a:hover {
     position: absolute;
     top: 61px;
     right: 0;
-    z-index: 99;
+    z-index: 900;
     background-color: #ffffff;
     border-radius: 4px;
     width: 154px;
-    /* height: 492px; */
     border: 1px solid #ccc;
     border-top: 0;
-    box-shadow: 0 1px 4px 0px rgb(145, 144, 144);
+    box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.137);
 }
 
 .drop-group {
     padding: 12px 0;
     border-bottom: 1px solid #ccc;
 }
-.drop-group a i{
+
+.drop-group a i {
     padding-right: 8px;
 }
-.drop-group a{
-    font-size: 16px;
-    display: block;
+
+.drop-group a {
     height: 21px;
     line-height: 21px;
+
+    font-size: 16px;
+    display: block;
     color: #71777c;
     padding: 6px 12px;
 }
-.drop-group a:hover{
+
+.drop-group a:hover {
     background-color: #ebebeb;
 }
-.nav-dropdown-list  .last{
+
+.nav-dropdown-list .last {
     border-bottom: 0;
+}
+
+/* 窗口右下角导航 */
+
+.window-leftbot-nav {
+    position: fixed;
+    width: 40px;
+    bottom: 20px;
+    right: 30px;
+}
+
+.window-leftbot-nav div {
+    width: 37px;
+    height: 37px;
+    text-align: center;
+    line-height: 38px;
+    
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 6px 1px rgba(218, 218, 218, 0.911);
+    margin: 15px 0px;
+    cursor: pointer;
+}
+
+.window-leftbot-nav div i {
+    display: block;
+    font-size: 20px;
+}
+
+.window-leftbot-nav div:last-of-type {
+    display: block;
+    color: #007fff;
+    font-size: 20px;
 }
