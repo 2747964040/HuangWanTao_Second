@@ -1,9 +1,11 @@
 window.onload = function () {
     // 刷新时能回到顶部，
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"  // 使用instant失效?
-    })
+    var toTopF = () => {
+        setTimeout(() => {
+            location.href = "#top"
+        }, 10);
+    }
+    toTopF()
 
     // 获取当前和之前页面id 的函数
     var getPageId = function () {
@@ -40,7 +42,6 @@ window.onload = function () {
         hidenOrShowAll("true", headBox, mainBodyBox)
         curPage = mainBodyBox
     }
-
 
 
     // 获取本地保存数据，
@@ -178,7 +179,7 @@ window.onload = function () {
         GAPFun("user/getUserInfo", "GET", {
             "userId": Id
         }, function (res) {
-            if (userId === Id) {
+            if (userId == Id) {
                 myInfo = res.data.data
                 myInfo.userId = Id
                 myInfo.avatar = basicUrl + myInfo.avatar
@@ -186,8 +187,9 @@ window.onload = function () {
                 localStorage.setItem("userAva", myInfo.avatar); // 保存数据
                 headAva.src = myInfo.avatar
                 // 当页面为我的主页时
-                if (curPageId === "perMainPage")
+                if (curPageId === "perMainPage") {
                     applyUserInfo(myInfo)
+                }
                 // 当页面为修改页面时
                 if (curPageId === "chanMyInfo")
                     initChanInfoPage()
@@ -197,10 +199,10 @@ window.onload = function () {
                 userInfo.userId = Id
                 userInfo.avatar = basicUrl + userInfo.avatar
                 // 当页面为其他用户主页时
-                if (curPageId === "perMainPage")
+                if (curPageId === "perMainPage") {
                     applyUserInfo(userInfo)
+                }
             }
-
         })
     }
 
@@ -293,6 +295,7 @@ window.onload = function () {
                 switchLoginBgcFun()
                 return
             }
+            Container.style.width = "1600px"
             hidenOrShowAll("false", headBox, dropList, winLefNav)
             switchHideAShow(curPage, writePage)
             getPageId()
@@ -303,6 +306,7 @@ window.onload = function () {
     // 点击我的主页
     var myPage = n$("#my-page")
     myPage.onclick = () => {
+        perId = userId
         getPageId()
         switchHideAShow(curPage, perMainPage)
         dropList.style.display = "none"
@@ -317,6 +321,12 @@ window.onload = function () {
     var perInfo = n$("#perInfo")
     var perNavImg = n$("#perNavImg")
     var applyUserInfo = function (userInfo) {
+        switchPerNavStyle(0)
+        hidenOrShowAll(false, perNavDrops[0], perNavDrops[1])
+        Loading.style.display = "none"
+        activeList.style.display = "block"
+        perWenzList.style.display = "none"
+
         perBigNav.src = userInfo.avatar,
             perNavImg.src = userInfo.avatar,
             perNickName.innerText = userInfo.nickname,
@@ -325,32 +335,58 @@ window.onload = function () {
         GAPFun("user/getUserLikeArticles", "GET", {
             "userId": userInfo.userId
         }, function (res) {
-            if (!res.data.data.message) {
-                console.log(perLoveNum);
-                perLoveNum[0].innerText = res.data.data.length
-                perLoveNum[1].innerText = res.data.data.length
-                perLoveNum[2].innerText = res.data.data.length
-                perLoveNum[3].innerText = res.data.data.length
-            }
+            let num = res.data.data.length ? res.data.data.length : 0
+            perLoveNum[0].innerText = num
+            perLoveNum[1].innerText = num
+            perLoveNum[2].innerText = num
+            perLoveNum[3].innerText = num
         })
         // 加载关注的用户的数量
-        GAPFun("user/getMySubscribe", "GET", {
-            "userId": userInfo.userId
-        }, function (res) {
-            if (!res.data.data.message) {
-                gzNum[0].innerText = res.data.data.length
-            }
-        })
+        setTimeout(() => {
+            GAPFun("user/getMySubscribe", "GET", {
+                "userId": userInfo.userId
+            }, function (res) {
+                let num = res.data.data.length ? res.data.data.length : 0
+                gzNum[0].innerText = num
+            })
+        }, 500);
         // 加载我的关注者数量
-        GAPFun("user/getSubscribeMe", "GET", {
-            "userId": userInfo.userId
+        setTimeout(() => {
+            GAPFun("user/getSubscribeMe", "GET", {
+                "userId": userInfo.userId
+            }, function (res) {
+                let num = res.data.data.length ? res.data.data.length : 0
+                gzNum[1].innerText = num
+            })
+        }, 1000);
+
+        // 是否关注
+        let myGuanzer = []
+        GAPFun("user/getMySubscribe", "GET", {
+            "userId": userId
         }, function (res) {
-            if (!res.data.data.message) {
-                gzNum[1].innerText = res.data.data.length
+            for (let i = 0; i < 2; i++) {
+                perPGuanz[i].innerText = "关注"
+                RemoveClass(perPGuanz[i], "per-had-guanz")
+            }
+            if (res.data.data.length) {
+                myGuanzer = res.data.data
+                myGuanzer.some((v) => {
+                    if (v.subId == perId) {
+                        for (let i = 0; i < 2; i++) {
+                            perPGuanz[i].innerText = "已关注"
+                            AddClass(perPGuanz[i], "per-had-guanz")
+                        }
+                        return true
+                    }
+                    else
+                        return false
+                })
             }
         })
-    }
 
+
+    }
 
     //  点赞/踩或取消点赞/踩函数
     var switchLike = function (url, userId, articleId, flag, callB) {
@@ -389,45 +425,48 @@ window.onload = function () {
             switchLoginBgcFun()
             return
         }
-        // 点击昵称跳到用户页面 需要用户id ,怎么获取？
-
-
 
         // 点击文章标题，跳转到文字详情页面
         if (target.className.search("content-title") !== -1) {
+            authorId = target.parentNode.getAttribute("data-authorId")
+            sessionStorage.setItem("authorId", authorId)
             wenzDetailId = target.getAttribute("data-articleId")
             initWenzDetailPag(wenzDetailId)
             sessionStorage.setItem("wenzDetailId", wenzDetailId)
             switchHideAShow(mainBodyBox, wenzDetail)
-            // window.scrollTo({
-            //     top: 0,
-            //     behavior: "instant"
-            // })
+            toTopF()
             getPageId()
             setASFun(wenzDetail, "wenzDetail", curPageId)
             return
         }
         // 点击文章评论，跳转到详情评论区
         if (target.className.search("icon-pinglun") !== -1) {
+            authorId = target.parentNode.parentNode.parentNode.getAttribute("data-authorId")
+            sessionStorage.setItem("authorId", authorId)
             wenzDetailId = target.getAttribute("data-articleId")
             initWenzDetailPag(wenzDetailId)
             sessionStorage.setItem("wenzDetailId", wenzDetailId)
             switchHideAShow(mainBodyBox, wenzDetail)
             getPageId()
             setASFun(wenzDetail, "wenzDetail", curPageId)
-            // 跳到评论区，自动触发事件 点击锚点？
+            location.href = "#PL"
             return
         }
+        // 点赞
         if (target.getAttribute("id") === "zan1") {
             const articleId = target.getAttribute("data-articleId")
             const flag = target.className.search("like") === -1 ? "true" : "false"
-            console.log(articleId);
             switchLike("article/thumbUpArticle", userId, articleId, flag, function (res) {
                 if (res.data.data.message === "点赞成功") {
                     switchStyle(target, "like")
+                    // 修改数量
+                    target.parentNode.children[1].innerText = target.parentNode.children[1].innerText * 1 + 1
+
                 }
                 else if (res.data.data.message === "取消点赞成功") {
                     switchStyle(target, "like")
+                    target.parentNode.children[1].innerText = target.parentNode.children[1].innerText * 1 - 1
+
                 }
                 else {
                     alert("操作失败")
@@ -435,12 +474,10 @@ window.onload = function () {
             })
             return
         }
+        // 点踩
         if (target.getAttribute("id") === "cai1") {
-            console.log("点踩");
-            console.log(target);
             const articleId = target.getAttribute("data-articleId")
             const flag = target.className.search("dislike") === -1 ? "true" : "false"
-            console.log(articleId);
             switchLike("article/dislikeArticle", userId, articleId, flag, function (res) {
                 if (res.data.data.message === "点踩成功") {
                     switchStyle(target, "dislike")
@@ -454,8 +491,27 @@ window.onload = function () {
             })
             return
         }
+        // 点击昵称
+        if (target.parentNode.getAttribute("class") === "content-writer") {
+            perId = target.getAttribute("data-authorId")
+            // 渲染用户数据
+            getUserInfo(perId)
+            if (perId)
+                if (perId != userId) {
+                    editPerInfo.forEach((v) => {
+                        v.style.display = "none"
+                    })
+                    perPGuanz.forEach(v => {
+                        v.style.display = "block"
+                    })
+                }
+            perNavI = 0
+            winScroll()
+            getPageId()
+            switchHideAShow(curPage, perMainPage)
+            setASFun(perMainPage, "perMainPage", curPageId)
+        }
     }
-
 
 
     // 获取主页面文章,，
@@ -488,7 +544,6 @@ window.onload = function () {
         }
         else
             mainLoading.style.display = "none"
-        console.log(WenzList);
         for (let i = WenzList.length - Len; i < WenzList.length; i++) {
             let newLi = document.createElement("li")
             like = WenzList[i].isThumbUp ? "like" : ""
@@ -497,7 +552,7 @@ window.onload = function () {
             newLi.setAttribute("data-authorId", WenzList[i].authorId)
             newLi.innerHTML = "<a href='javascript:;'>" +
                 "<ul class='content-info-list'>" +
-                "<li class='content-writer'><a href='#'>" + WenzList[i].author + "</a></li>" +
+                "<li class='content-writer'><a href='javascript:;' data-authorId = '" + WenzList[i].authorId + "'>" + WenzList[i].author + "</a></li>" +
                 "<li class='poiont'>·</li>" +
                 "<li class='content-date'>" + i + "小时前" + "</li>" +
                 "<li class='poiont'>·</li>" +
@@ -522,7 +577,7 @@ window.onload = function () {
             newLi.setAttribute("data-authorId", perId)
             newLi.innerHTML = "<a href='#'>" +
                 "<ul class='content-info-list'>" +
-                "<li class='content-writer'><a href='#'>" + nickN + "</a></li>" +
+                "<li class='content-writer'>" + nickN + "</li>" +
                 "<li class='poiont'>·</li>" +
                 "<li class='content-date'>" + i + "小时前" + "</li>" +
                 "<li class='poiont'>·</li>" +
@@ -545,9 +600,10 @@ window.onload = function () {
             let newLi = document.createElement("li")
             like = userId === perId ? "like" : ""
             newLi.setAttribute("class", "contnet-item")
+            newLi.setAttribute("data-authorId", myWenzList[i].authorId)
             newLi.innerHTML = "<a href='#'>" +
                 "<ul class='content-info-list'>" +
-                "<li class='content-writer'><a href='#'>" + myWenzList[i].author + "</a></li>" +
+                "<li class='content-writer'><a href='javascript:;' data-authorId='" + myWenzList[i].authorId + "'>" + myWenzList[i].author + "</a></li>" +
                 "<li class='poiont'>·</li>" +
                 "<li class='content-date'>" + i + "小时前" + "</li>" +
                 "<li class='poiont'>·</li>" +
@@ -613,8 +669,6 @@ window.onload = function () {
             GAPFun("user/getMySubscribe", "GET", {
                 "userId": userId
             }, function (res) {
-                console.log("abc");
-                console.log(node);
                 IGuanZ = [...res.data.data]
                 for (let i = 0; i < obj.length; i++) {
                     let ifGuanz = IGuanZ.some((v) => {
@@ -656,7 +710,6 @@ window.onload = function () {
     var yOff = 0
     var preYOff = 0
     var BotInfo = n$("#BotInfo")
-    // console.log(BotInfo);
     var mainTopNav = n$(".main-top-nav")
     //  获取侧边高度和侧边顶部广告的高度
     var asideGg = n$(".body-right-banner-img-con")
@@ -690,8 +743,6 @@ window.onload = function () {
         yOff = window.pageYOffset   //获取被卷去的量
         mainMaxHeight = document.body.offsetHeight  //获取当前文档高度
         windowHeight = document.documentElement.clientHeight // 窗口高度
-        // console.log(mainMaxHeight - yOff);
-        // console.log(yOff + " VS " + preYOff);
         if (yOff < preYOff) {
             headBox.style.top = "0"
         }
@@ -742,11 +793,10 @@ window.onload = function () {
                 WenzPage++
                 getWenzList(userId, WenzPage)
             }
-
         }
 
 
-        if (yOff < 190) {
+        if (yOff < 300) {
             perTopNav.style.display = "none"
             perTopNavItems = perBodyNav.querySelectorAll("li")
             perNavDrops = perBodyNav.querySelectorAll(".per-nav-drop")
@@ -767,7 +817,7 @@ window.onload = function () {
                 perTopNav.style.top = "0"
             }
 
-            if (yOff < 190) {
+            if (yOff < 300) {
                 perTopNav.style.display = "none"
                 perTopNavItems = perBodyNav.querySelectorAll("li")
                 perNavDrops = perBodyNav.querySelectorAll(".per-nav-drop")
@@ -778,7 +828,7 @@ window.onload = function () {
                 perNavDrops = perTopNav.querySelectorAll(".per-nav-drop")
             }
 
-            if (yOff > 190 && yOff < 360) {
+            if (yOff > 300 && yOff < 360) {
                 perTopNav.style.display = "block"
                 perTopNav.style.top = "60px"
             }
@@ -812,21 +862,46 @@ window.onload = function () {
     }
 
 
-
-
     // 点击修改个人资料
+
     var editPerInfo = n$a(".edit-person-info")
-    editPerInfo[0].onclick = () => {
-        switchHideAShow(chanMyInfo, perMainPage)
-        getPageId()
-        setASFun(chanMyInfo, "chanMyInfo", curPageId)
-        initChanInfoPage()
+    for (let j = 0; j < editPerInfo.length; j++) {
+        editPerInfo[j].onclick = () => {
+            switchHideAShow(chanMyInfo, perMainPage)
+            getPageId()
+            setASFun(chanMyInfo, "chanMyInfo", curPageId)
+            initChanInfoPage()
+        }
     }
-    editPerInfo[1].onclick = () => {
-        switchHideAShow(chanMyInfo, perMainPage)
-        getPageId()
-        setASFun(chanMyInfo, "chanMyInfo", curPageId)
-        initChanInfoPage()
+
+    // 如果是其他用户页面显示是否关注
+    var perPGuanz = n$a("#perPGuanz")
+    for (let j = 0; j < perPGuanz.length; j++) {
+        perPGuanz[j].onclick = () => {
+            if (perPGuanz[j].getAttribute("class").search("per-had-guanz") == -1) {
+                // console.log("未关注");
+                GAPFun("user/subscribeSomeone", "POST", {
+                    "userId": userId,
+                    "subscribeId": perId
+                }, function (res) {
+                    for (let i = 0; i < 2; i++) {
+                        perPGuanz[i].innerText = "已关注"
+                        AddClass(perPGuanz[i], "per-had-guanz")
+                    }
+                })
+            }
+            else {//user/cancelSubscribe
+                GAPFun("user/cancelSubscribe", "POST", {
+                    "userId": userId,
+                    "subscribeId": perId
+                }, function (res) {
+                    for (let i = 0; i < 2; i++) {
+                        perPGuanz[i].innerText = "关注"
+                        RemoveClass(perPGuanz[i], "per-had-guanz")
+                    }
+                })
+            }
+        }
     }
 
 
@@ -885,7 +960,6 @@ window.onload = function () {
             switchPerNavStyle(0)
             perNavI = 0
             hidenOrShowAll(false, perNavDrops[0], perNavDrops[1])
-            // Nothing.style.display = "block"
             Loading.style.display = "none"
             activeList.style.display = "block"
             perWenzList.style.display = "none"
@@ -917,7 +991,6 @@ window.onload = function () {
 
         // 获取点赞的文章
         if (target.getAttribute("id") === "dropWenz" || target.parentNode.getAttribute("id") === "dropWenz") {
-            console.log("我点赞的文章");
             perHeadTitle.style.display = "block"
             addFenLei(leftTitle, rightList, "赞", [{
                 text: "文章",
@@ -938,7 +1011,6 @@ window.onload = function () {
                 Loading.style.display = "none"
                 if (!res.data.data.message) {
                     myWenzList = [...res.data.data]
-                    console.log(myWenzList);
                     let zanWenz = n$("#zanWenz")
                     zanWenz.innerText = "文章( " + myWenzList.length + " )"
                     perLoveNum[0].innerText = myWenzList.length
@@ -960,7 +1032,6 @@ window.onload = function () {
             Nothing.style.display = "block"
             Loading.style.display = "none"
             hidenOrShowAll(false, perNavDrops[0], perNavDrops[1])
-            console.log("小册");
             addFenLei(leftTitle, rightList, "小册", [{
                 text: "购买的",
                 id: "buy",
@@ -998,7 +1069,6 @@ window.onload = function () {
                 Loading.style.display = "none"
                 if (!res.data.data.message) {
                     IGuanZ = [...res.data.data]
-                    console.log(IGuanZ);
                     addGuanZer(perWenzList, IGuanZ)
                 }
                 else {
@@ -1024,7 +1094,6 @@ window.onload = function () {
     }
 
 
-
     // 获取我的文章函数
     var getAaddMyWenz = function () {
         myWenzList = []
@@ -1044,7 +1113,6 @@ window.onload = function () {
 
     // 我的页面文章的事件委托
     var editWenzId = ""         // 用户编辑文章
-    var wenzDetailId = ""
     var perWenzList = n$(".per-wenz-list")
     var stop4 = 0
     perWenzList.onclick = function (ev) {
@@ -1057,39 +1125,57 @@ window.onload = function () {
 
         var ev = ev || window.event;
         var target = ev.target || ev.srcElement;
-        console.log(target);
-        // console.log(target.getAttribute("id"));
+        // console.log(target);
+
+        // 点击作者昵称
+        if (target.parentNode.getAttribute("class") === "content-writer") {
+            perId = target.getAttribute("data-authorId")
+            // 渲染用户数据
+            getUserInfo(perId)
+            if (perId != userId) {
+                editPerInfo.forEach((v) => {
+                    v.style.display = "none"
+                })
+                perPGuanz.forEach(v => {
+                    v.style.display = "block"
+                })
+            }
+            perNavI = 0
+            winScroll()
+            getPageId()
+            switchHideAShow(curPage, perMainPage)
+            setASFun(perMainPage, "perMainPage", curPageId)
+        }
 
         // 点击文章标题
         if (target.className.search("content-title") !== -1) {
+            authorId = target.parentNode.getAttribute("data-authorId")
+            sessionStorage.setItem("authorId", authorId)
             wenzDetailId = target.getAttribute("data-articleId")
             initWenzDetailPag(wenzDetailId)
             sessionStorage.setItem("wenzDetailId", wenzDetailId)
             switchHideAShow(perMainPage, wenzDetail)
-            // window.scrollTo({
-            //     top: 0,
-            //     behavior: "instant"
-            // })
+            toTopF()
             getPageId()
             setASFun(wenzDetail, "wenzDetail", curPageId)
             return
         }
         // 点击评论 跳到文章详情和评论区，
         if (target.className.search("icon-pinglun") !== -1) {
+            authorId = target.parentNode.parentNode.parentNode.getAttribute("data-authorId")
+            sessionStorage.setItem("authorId", authorId)
             wenzDetailId = target.getAttribute("data-articleId")
             sessionStorage.setItem("wenzDetailId", wenzDetailId)
             initWenzDetailPag(wenzDetailId)
             switchHideAShow(perMainPage, wenzDetail)
             getPageId()
             setASFun(wenzDetail, "wenzDetail", curPageId)
-            // 跳到评论区，自动触发事件 点击锚点？
+            location.href = "#PL"
             return
         }
         if (target.getAttribute("id") === "zan1") {
-            console.log("点赞");
             const articleId = target.getAttribute("data-articleId")
             const flag = target.className.search("like") === -1 ? "true" : "false"
-            console.log(articleId);
             switchLike("article/thumbUpArticle", userId, articleId, flag, function (res) {
                 if (res.data.data.message === "点赞成功") {
                     switchStyle(target, "like")
@@ -1101,11 +1187,8 @@ window.onload = function () {
             return
         }
         if (target.getAttribute("id") === "cai1") {
-            console.log("点踩");
-            console.log(target);
             const articleId = target.getAttribute("data-articleId")
             const flag = target.className.search("dislike") === -1 ? "true" : "false"
-            console.log(articleId);
             switchLike("article/dislikeArticle", userId, articleId, flag, function (res) {
                 if (res.data.data.message === "点踩成功") {
                     switchStyle(target, "dislike")
@@ -1135,6 +1218,7 @@ window.onload = function () {
                     return false
             })
             switchHideAShow(perMainPage, writePage)
+            Container.style.width = "1600px"
             winLefNav.style.display = "none"
             getPageId()
             setASFun(writePage, "writePage", curPageId)
@@ -1149,8 +1233,6 @@ window.onload = function () {
             }, function (res) {
                 if (res.data.data.message === "删除成功") {
                     myWenzList.some((v, i) => {
-                        console.log(myWenzList[i].articleId);
-                        console.log(articleId);
                         if (myWenzList[i].articleId == articleId) {
                             myWenzList.splice(i, 1)
                             return true
@@ -1192,15 +1274,20 @@ window.onload = function () {
         // 点击关注者或关注的用户跳转到用户详情页
         if (target.nodeName !== "BUTTON" && (target.parentNode.getAttribute("id") === "guanzA" || target.getAttribute("id") === "guanzA" || target.parentNode.parentNode.getAttribute("id") === "guanzA")) {
             target = target.parentNode.getAttribute("id") === "guanzA" ? target.parentNode : target.getAttribute("id") === "guanzA" ? target : target.parentNode.parentNode
-            console.log(target);
+            // console.log(target);
             perId = target.getAttribute("data-subId")
             // 渲染用户数据
             getUserInfo(perId)
-            editPerInfo.forEach((v) => {
-                v.style.display = "none"
-            })
-            switchPerNavStyle(0)
+            if (perId != userId) {
+                editPerInfo.forEach((v) => {
+                    v.style.display = "none"
+                })
+                perPGuanz.forEach(v => {
+                    v.style.display = "block"
+                })
+            }
             perNavI = 0
+            winScroll()
             hidenOrShowAll("false", perHeadTitle, activeList, Nothing)
             hidenOrShowAll("true", perWenzList, Loading)
             perWenzList.innerHTML = ""
@@ -1233,7 +1320,7 @@ window.onload = function () {
         let Items = perRList.querySelectorAll("li")
         var ev = ev || window.event;
         var target = ev.target || ev.srcElement;
-        console.log(target);
+        // console.log(target);
         Items.forEach((v, i) => {
             RemoveClass(Items[i], "current")
         })
@@ -1265,7 +1352,6 @@ window.onload = function () {
                 Loading.style.display = "none"
                 if (!res.data.data.message) {
                     guanZer = [...res.data.data]
-                    console.log(guanZer);
                     perWenzList.innerHTML = ""
                     addGuanZer(perWenzList, guanZer, true)
                 }
@@ -1286,7 +1372,6 @@ window.onload = function () {
                 Loading.style.display = "none"
                 if (!res.data.data.message) {
                     myWenzList = [...res.data.data]
-                    console.log(myWenzList);
                     let zanWenz = n$("#zanWenz")
                     zanWenz.innerText = "文章( " + myWenzList.length + " )"
                     addMyloveWenz(perWenzList)
@@ -1354,7 +1439,6 @@ window.onload = function () {
                 var formData = new FormData()
                 formData.append("avatar", file)
                 formData.append("userId", userId)
-                console.log(formData.get("userId"));
                 // 设置请求头
                 let config = {
                     headers: { 'Content-Type': 'multipart/form-data' }
@@ -1362,7 +1446,6 @@ window.onload = function () {
                 };
                 axios.post("http://47.100.42.144:3389/user/changeUserAvatar", formData, config)
                     .then((res) => {
-                        console.log(res.data.data);
                         // 修改后，重新获取用户数据，获取成功后会重新初始化数据，
                         getUserInfo(userId)
                     })
@@ -1414,12 +1497,11 @@ window.onload = function () {
         }, function (res) {
             if (res.data.data.message === "修改资料成功") {
                 myInfo.nickname = inputName.value
-                console.log(myInfo);
                 inputName.value = ""
                 switchChanName(preseveName, chanNImg, chanName)
             }
             else {
-                console.log("修改失败");
+                alert("修改失败")
             }
         })
     }
@@ -1440,14 +1522,12 @@ window.onload = function () {
         }
     }
 
-
     // 修改个人介绍
     var inputIntro = n$("#inputIntro")
     var perserveIntro = n$("#perserveIntro")
     var chanIntroImg = n$("#chanIntroImg")
     var chanIntro = n$("#chanIntro")
     inputIntro.onclick = () => {
-        console.log("修改右侧的样式");
         // 获取右侧，设置点击事件
         if (getStyle(perserveIntro, "display") === "none") {
             switchChanName(perserveIntro, chanIntroImg, chanIntro)
@@ -1483,7 +1563,7 @@ window.onload = function () {
                 switchChanName(perserveIntro, chanIntroImg, chanIntro)
             }
             else {
-                console.log("修改失败");
+                alert("修改失败")
             }
         })
     }
@@ -1575,7 +1655,6 @@ window.onload = function () {
         })
     }
     writeContent.oninput = () => {
-        console.log(writeContent.value);
         writeContent.onkeydown = (e) => {
             let keyC = e.keyCode
             if (keyC === 9) {
@@ -1600,7 +1679,7 @@ window.onload = function () {
 
     // 如果是从编辑文章进入写文章页面
     var editWenzFun = function (obj) {
-        console.log(obj);
+        // console.log(obj);
         writeTitle.value = obj.title
         writeContent.innerText = obj.content
         showContent.innerText = obj.content
@@ -1674,38 +1753,8 @@ window.onload = function () {
         }
         leftPl.children[0].children[1].innerText = obj.commentNum
 
-        // 是否关注
-        GAPFun("article/thumbUpArticle", "POST", {
-            "userId": userId,
-            "articleId": wenzDetailId,
-            "flag": "true"
-        }, function (res) {
-            GAPFun("user/getUserLikeArticles", "GET", {
-                "userId": userId
-            }, function (res) {
-                myLoveWenz = res.data.data
-                myLoveWenz.some((v) => {
-                    if (v.articleId == wenzDetailId) {
-                        authorId = v.authorId
-                        console.log(authorId);
-                        // 执行检查否关注的函数，并且调节样式
-                        ifGuanzFun(authorId)
-                        return true
-                    }
-                    else
-                        return false
-                })
-            })
-            if (res.data.data.message === "点赞成功") {
-                // 点赞成功，需要取消点赞
-                GAPFun("article/thumbUpArticle", "POST", {
-                    "userId": userId,
-                    "articleId": wenzDetailId,
-                    "flag": "false"
-                })
-            }
-        })
-
+        // 执行检查否关注的函数，并且调节样式
+        ifGuanzFun(authorId)
     }
 
     // 检查是否关注，并且调节样式
@@ -1739,7 +1788,7 @@ window.onload = function () {
     for (let i = 0; i < 2; i++) {
         guanzBtns[i].onclick = function () {
             if (this.getAttribute("class").search("had-guan") == -1) {
-                console.log("未关注");
+                // console.log("未关注");
                 GAPFun("user/subscribeSomeone", "POST", {
                     "userId": userId,
                     "subscribeId": authorId
@@ -1761,62 +1810,15 @@ window.onload = function () {
                     }
                 })
             }
-
         }
     }
-
 
     // 点击评论框
-    var inputPl = n$("#inputPl")
-    var inputPlTools = n$("#inputPlTools")
-    inputPl.onclick = () => {
-        inputPlTools.style.display = "block"
-        inputPl.style.borderColor = "#027fff"
-    }
-    inputPl.onblur = () => {
-        setTimeout(() => {
-            inputPlTools.style.display = "none"
-            inputPl.style.borderColor = "#ccc"
-        }, 100)
-    }
-
-    // 发送评论函数
-    var postPl = () => {
-        var value = inputPl.innerText
-        if (!value || !value.trim()) {
-            alert("请输入内容")
-        }
-        else {
-            GAPFun("comment/postComment", "POST", {
-                "userId": userId,
-                "articleId": wenzDetailId,
-                "comment": value
-            }, function (res) {
-                inputPl.innerText = ""
-                if (res.data.data.message === "提交成功") {
-                    // 数量变化
-                    leftPl.children[0].children[1].innerText = leftPl.children[0].children[1].innerText * 1 + 1
-
-                    // 添加节点
-                    // 第一步，获取要添加到的父节点 commentList，使用 insertBefore,参数第一个为需要添加的节点，第二个为目标节点，会添加到目标节点前；
-                    // 使用函数包装，传入父节点和新节点，判断父节点是否有子节点，如果没有就使用append 就可以，没有就需要使用sinert
-                    // 是我的评论，所以所有数据都是我的，但是得获取评论ID，这个就比较麻烦，评论内容可能一样，么有办法区别哎？
-
-                    //  只能刷新
-                    commentList.innerHTML = ""
-                    getPlList(userId, wenzDetailId, 1)
-                }
-            })
-        }
-    }
-    // 发送评论
-    var comBut = n$(".com-but")
-    comBut.onclick = () => {
-        postPl()
-    }
+    var commentForm = n$(".comment-form")
+    plFun(commentForm, 1)
 
     var plList = []
-    var getPlList = function (userId, articleId, page) {
+    getPlList = function (userId, articleId, page) {
         GAPFun("comment/getComment", "GET", {
             "userId": userId,
             "articleId": articleId,
@@ -1825,16 +1827,14 @@ window.onload = function () {
             // console.log(res.data.data);
             plList = [...plList, ...res.data.data]
             addPl(commentList, res.data.data.length)  //,先获取回复，回复完再渲染
-
         })
     }
 
-
-    var commentList = n$(".comment")
+    commentList = n$(".comment")
     var addPl = function (node, len) {
         let like, dislike
         for (let i = plList.length - len; i < plList.length; i++) {
-            // let replyList = []
+            let comment = tranEmojiFun(plList[i].comment, 1)
 
             // 添加节点
             let newLi = document.createElement("li")
@@ -1849,7 +1849,7 @@ window.onload = function () {
                     "<div div class='item-right fl' >" +
                     "<div class='com-top-box'><span class='name'>" + plList[i].commentator + "<img src='imgs/lv6.svg'" +
                     "alt=''></span><em class='position'>web前端开发工程师</em></div>" +
-                    "<div class='com-content less' id='content'>" + plList[i].comment + "</div><div class='see-more'>" +
+                    "<div class='com-content less' id='content'>" + comment + "</div><div class='see-more'>" +
                     "<span class='see-more-btn' id='seeMore' data-comid='com" + i + "'>展开</span></div></div>" +
                     "<ul class='item-btn clearF' data-commentId='" + plList[i].commentId + "'>" +
                     "<li class='fl'>" + i + "小时前 <span class='del-reply'>· 删除</span></li>" +   // 判断id,如果是自己才显示删除
@@ -1858,18 +1858,22 @@ window.onload = function () {
                     "<li class='fr zan " + like + "'><i class='iconfont icon-dianzan'><span>" + plList[i].thumbUpNum + "</span></i></li>" +
                     "</ul><div class='reply-form' style='display:none'>" +
                     "<div class='input' placeholder='输入评论...' contenteditable='true' id='inputPl'></div>" +
-                    "<ul class='when-reply'>" +
-                    "<li class='fl'><img src='imgs/biaoq.svg' alt='表情'>表情</li>" +
+                    "<ul class='when-reply' style='display: none;'' id='inputPlTools'>" +
+                    "<li class='fl emial-box'><img src='imgs/biaoq.svg' alt='表情' class='bqimg'><span class='emoji-btn'>表情</span>" +
+                    "<span id='out-box' style='display: none;' class = 'hfout-box'><div class='triangle-se'></div><div class='emoji-list-box'>" +
+                    "<div><ul class='emoji-list'></ul><ul class='emoji-bot-nav'><li class='current' data-navi='i1'></li><li class='' data-navi='i2'></li>" +
+                    "</ul></div></div> </span></li>" +
                     "<li class='reply-but fr'>评论</li>" +
                     "<li class='kjj fr'>Ctrl or ⌘ + Enter</li>" +
                     "</ul></div>"
                 if (replyList.length)
                     for (let k = 0; k < replyList.length; k++) {
+                        let replyContent = tranEmojiFun(replyList[k].replyContent, 1)
                         newUl.innerHTML += "<li class='reply-item' id='rep" + k + "'><img src='http://47.100.42.144:3389/" + replyList[k].replierAvatar + "' alt='头像' class='reply-ava fl'>" +
                             "<div class='item-right fl'>" +
                             "<div class='rep-top-box'><span class='name'>" + replyList[k].replier + "</span><img" +
                             "src='imgs/lv6.svg' alt=''><em class='position'>web前端开发工程师</em></div>" +
-                            "<div class='rep-content less' id='content'>" + replyList[k].replyContent + "</div>" +
+                            "<div class='rep-content less' id='content'>" + replyContent + "</div>" +
                             "<div class='see-more'><span class='see-more-btn' id='seeMore'  data-repid='rep" + k + "'>展开</span></div></div>" +
                             "<ul class='item-btn clearF' data-replyId='" + replyList[k].replyId + "'  data-repkey='repNum" + i + "'>" +
                             "<li class='fl'>5小时前 <span class='del-reply'>· 删除</span></li>" +
@@ -1903,10 +1907,19 @@ window.onload = function () {
         })
     }
 
+    var stop10 = 0
     commentList.onclick = (ev) => {
+        if (stop10)
+            return
+        stop10 = 1
+
+        setTimeout(() => {
+            stop10 = 0
+        }, 500)
+
         var ev = ev || window.event;
         var target = ev.target || ev.srcElement;
-        console.log(target);
+        // console.log(target);
         // 评论和回复收起与展开
         if (target.getAttribute("id") === "seeMore") {
             console.log("展开");
@@ -1972,38 +1985,56 @@ window.onload = function () {
         }
         // 回复
         if (target.getAttribute("class").search("pinglun") !== -1) {
-            var comId = target.parentNode.parentNode.getAttribute("data-commentId")
-            var replyInputBox = target.parentNode.parentNode.parentNode.querySelector(".reply-form")
-            var input = replyInputBox.querySelector(".input")
-            // 切换输入框，
-            switchHideAShow(replyInputBox)
-            input.focus()
+            var replyForm = target.parentNode.parentNode.parentNode.querySelector(".reply-form")
+            plFun(replyForm, 0)
 
-            let postReplyBtn = replyInputBox.querySelector(".reply-but")
+            var comId = target.parentNode.parentNode.getAttribute("data-commentId")
+            var input = replyForm.querySelector(".input")
+            let inputPlTools = replyForm.querySelector("#inputPlTools")
+            let outBox = inputPlTools.querySelector("#out-box")
+            // 切换输入框，
+            switchHideAShow(replyForm)
+            input.focus()
+            input.onblur = () => {
+                k = 0
+                setTimeout(() => {
+                    if (k)
+                        return
+                    outBox.style.display = "none"
+                    inputPlTools.style.display = "none"
+                    if (!input.innerHTML || !input.innerHTML.trim())
+                        replyForm.style.display = "none"
+                }, 150)
+            }
+            let postReplyBtn = inputPlTools.querySelector(".reply-but")
             postReplyBtn.onclick = () => {
-                if (!input.innerText || !input.innerText.trim()) {
-                    alert("输入无效")
+                var value = input.innerHTML
+                if (!value || !value.trim()) {
+                    alert("请输入内容")
                     return
                 }
+                value = tranEmojiFun(value, 0)
                 GAPFun("reply/postReply", "POST", {
                     "userId": userId,
                     "commentId": comId,
-                    "reply": input.innerText
+                    "reply": value
                 }, function (res) {
                     console.log(res.data.data);  //提交成功
-                    if (res.data.data.message === "提交成功") {
-                        //增加数量,增加节点，得添加回复ID，但是没有返回ID，
-                        // 重新加载
+                    if (res.data.data.message == "提交成功") {
+                        //  增加数量, 增加节点，得添加回复ID，但是没有返回ID，
+                        //重新加载
                         commentList.innerHTML = ""
                         getPlList(userId, wenzDetailId, 1)
-
                     }
                 })
                 input.innerText = ""
-                switchHideAShow(replyInputBox)
+                switchHideAShow(replyForm)
+            }
+            //    键盘快捷发送
+            input.oninput = () => {
+                keySendFun(input, postReplyBtn.onclick)
             }
         }
-
     }
 
     // 删除评论函数，
@@ -2119,19 +2150,24 @@ window.onload = function () {
                 getWenzList(userId, 1)
         }
         if (prePageId === "perMainPage") {
+            perNavI = 0
+            winScroll()
             applyUserInfo(myInfo)
+            perId = userId
         }
-        prePage = n$("#" + prePageId)
+
         if (curPageId === "writePage")
             headBox.style.display = "block"
+        Container.style.width = "1583px"
         if (prePageId === "writePage") {
             headBox.style.display = "none"
         }
+
+        prePage = n$("#" + prePageId)
         switchHideAShow(prePage, curPage)
         setASFun(prePage, prePageId, curPageId)
         console.log(curPageId);
         if (callB && callB()) {
-
         }
     }
 
@@ -2158,8 +2194,8 @@ window.onload = function () {
     }
 }
 
-
-
+// 功能缺少
+// 点击进入其他用户界面后，对用户的关注按钮
 
 // 问题  
 
@@ -2168,24 +2204,22 @@ window.onload = function () {
 // 点的太快，前面还在记载，就跳到其他模块去了，然后之前的数据就会渲染到当前页面；
 // 可以尝试在后面的数据渲染前一刻才清空内容，而不是点击后立即清空数据，因为点击清空后，其他数据来就渲染了
 // 或者清空两次，点击立即清空，渲染前清空
+// 或者取消发送的请求。
 
 
 // 原来的函数，怎么停止，即加入从主页面进入，主页面的函数调用了，其他页面移动什么会不会主页面用在加载数据
-
-// 首页点赞取消需要改变一下数量
 
 
 // 从其他页面刷新，再点击回退，到个人页面，可能页面会抖，，为什么？
 
 
-//写文章右上角头像，同步滚动等功能
-
-// 点击头像的下拉框被挡，z-index无效
-
 //不是我写的评论回复无删除，但是又怎么知道是不是我写的评论或回复呢？
-
 
 // 对于文章详情的评论和回复，目前我使用的是分页加载评论，一次性加载回复
 // 但是这对刚发评论不是很友好，新的评论出现是排在最后面的，如果不一次性加载完，获取不到最后的评论
-// 对于回复也不友好，发完评论后和回复都是不返回ID的，如果添加到第一个位置，删除时就必须刷新，
-// 刷新就会出现在末尾位置，嗯。可能我太菜了吧。不知道怎么搞；
+// 对于回复也不友好，发完评论后和回复都是不返回ID的，
+// 嗯。是我太菜了吧。不知道怎么搞；
+
+// 提示功能，如修改成功，删除成功等等。。。
+
+// 多个请求同时发送。回来的数据有问题，如初始化关注和关注者人数时，数据为0；如果设置定时，慢一点发送就不会

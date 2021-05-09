@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <div class="container" id="Top">
+    <div class="container" id="Top" name="Top">
         <!-- 顶部导航栏 -->
         <div class="head-box" style="display: none ;" id="headBox">
             <div class="cent">
@@ -381,6 +381,7 @@
                         </li>
                     </ul>
                     <div class="edit-person-info fr" id="editPerInfo">编辑个人资料</div>
+                    <div class="per-page-guanz fr" id="perPGuanz" style="display: none;">关注</div>
                 </div>
             </div>
             <!-- 主体内容- -->
@@ -397,12 +398,13 @@
                             <li class="job-a-skill" id="perInfo">+ 你从事什么职业？</li>
                         </ul>
                         <ul class="right-info fr">
-                            <div class="per-icon-list">
+                            <li class="per-icon-list">
                                 <i class="iconfont icon-weibo1"></i>
                                 <i class="iconfont icon-github2"></i>
                                 <i class="iconfont icon-globe"></i>
-                            </div>
+                            </li>
                             <li class="edit-person-info fr">编辑个人资料</li>
+                            <div class="per-page-guanz fr " id="perPGuanz" style="display: none;">关注</div>
                         </ul>
                     </div>
                     <!-- 左侧顶部导航 -->
@@ -645,7 +647,23 @@
                             <img src="imgs/avatar.png" alt="头像" id="comMyAva">
                             <div class="input" placeholder="输入评论..." contenteditable="true" id="inputPl"></div>
                             <ul class="when-com" style="display: none;" id="inputPlTools">
-                                <li class="fl"><img src="imgs/biaoq.svg" alt="表情">表情</li>
+                                <li class="fl emial-box">
+                                    <img src="imgs/biaoq.svg" alt="表情" class="bqimg">
+                                    <span class="emoji-btn">表情</span>
+                                    <span id="out-box" style="display: none;">
+                                        <div class="triangle-se"></div>
+                                        <div class="emoji-list-box">
+                                            <div>
+                                                <ul class="emoji-list">
+                                                </ul>
+                                                <ul class="emoji-bot-nav">
+                                                    <li class="current" data-navi="i1"></li>
+                                                    <li class="" data-navi="i2"></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </li>
                                 <li class="com-but fr">评论</li>
                                 <li class="kjj fr">Ctrl or ⌘ + Enter</li>
                             </ul>
@@ -690,32 +708,19 @@
                     <div class="more-wenz">
                         <div class="more-wenz-top">相关文章</div>
                         <ul class="more-wenz-list">
-                            <li><a href="#" class="more-wenz-title">祝你生日快乐额祝你生日快乐额祝你生日快乐快乐</a>
+                            <li><a href="#" class="more-wenz-title">吼吼吼。这是相关文章，你敢信？</a>
                                 <ul class="more-wenz-tools">
                                     <li class="tools-item"><i class="iconfont icon-dianzan"></i><em>22</em></li>
                                     <li class="tools-item"><i class="iconfont icon-pinglun"></i><em>4</em></li>
                                 </ul>
                             </li>
-                            <li><a href="#" class="more-wenz-title">祝你生日快乐额祝你生日快乐额祝你生日快乐快乐</a>
+                            <li><a href="#" class="more-wenz-title">什么？这是相关的文章？什么？这是相关的文章？什么？这是相关的文章？什么？这是相关的文章？</a>
                                 <ul class="more-wenz-tools">
                                     <li class="tools-item"><i class="iconfont icon-dianzan"></i><em>22</em></li>
                                     <li class="tools-item"><i class="iconfont icon-pinglun"></i><em>4</em></li>
                                 </ul>
                             </li>
-                            <li><a href="#" class="more-wenz-title">祝你生日快乐额祝你生日快乐额祝你生日快乐快乐</a>
-                                <ul class="more-wenz-tools">
-                                    <li class="tools-item"><i class="iconfont icon-dianzan"></i><em>22</em></li>
-                                    <li class="tools-item"><i class="iconfont icon-pinglun"></i><em>4</em></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"
-                                    class="more-wenz-title">祝你生日快乐额祝你生日快乐额祝你生日祝你生日快乐额祝你生日快乐额祝你生日快祝你生日快乐额祝你生日快乐额祝你生日快快乐快乐</a>
-                                <ul class="more-wenz-tools">
-                                    <li class="tools-item"><i class="iconfont icon-dianzan"></i><em>22</em></li>
-                                    <li class="tools-item"><i class="iconfont icon-pinglun"></i><em>4</em></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" class="more-wenz-title">祝你生日快乐额祝你生日快乐额祝你生日快乐快乐</a>
+                            <li><a href="#" class="more-wenz-title">嗯。加油。</a>
                                 <ul class="more-wenz-tools">
                                     <li class="tools-item"><i class="iconfont icon-dianzan"></i><em>22</em></li>
                                     <li class="tools-item"><i class="iconfont icon-pinglun"></i><em>4</em></li>
@@ -729,8 +734,8 @@
                     <li class="le-tools-item " id="leftLove"><i class="iconfont icon-dianzan "></i><span
                             class="love-num ">23</span></li>
                     <li class="le-tools-item " id="leftCai"><i class="iconfont icon-dianzan1"></i></li>
-                    <li class="le-tools-item" id="leftPl"><a href="#PL"><i class="iconfont icon-pinglun"></i><span
-                                class="pl-num">0</span></a></li>
+                    <li class="le-tools-item" id="leftPl"><a href="#PL" id="PLA"><i
+                                class="iconfont icon-pinglun"></i><span class="pl-num">0</span></a></li>
                     <li class="le-tools-item"><i class="iconfont icon-shoucang1"></i> </li>
                     <li class="le-tools-item"><i class="iconfont icon-jubao"></i> </li>
                     <li class="share">分享</li>
@@ -877,4 +882,5 @@
         </div>
     </div>
 </body>
+
 </html>

@@ -16,7 +16,6 @@
     width: 652px;
     height: 100%;
     padding: 0 24px;
-
     background-color: #fff;
     margin-bottom: 20px;
 }
@@ -61,7 +60,6 @@
     height: 21px;
     line-height: 10px;
     margin-top: 3px;
-
     font-size: 13px;
     color: rgb(128, 128, 128);
 }
@@ -78,11 +76,11 @@
     color: #6cbd45;
     background-color: #fff;
 }
-.wenz-author-box .had-guan{
-     background-color: #6cbd45;
-     color: white;
-}
 
+.wenz-author-box .had-guan {
+    background-color: #6cbd45;
+    color: white;
+}
 
 /* 主体右侧内容 */
 
@@ -96,7 +94,6 @@
     position: relative;
     width: 240px;
     height: 204px;
-
     background-color: #fff;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.158);
 }
@@ -148,14 +145,12 @@
 
 .stat-item i {
     display: inline-block;
-
     width: 23px;
     height: 25px;
     text-align: center;
     line-height: 25px;
     margin-right: 6px;
     padding-left: 2px;
-
     font-size: 14px;
     border-radius: 50%;
     background-color: #e1efff;
@@ -223,7 +218,6 @@
     padding: 12px 15px;
     width: 210px;
     height: 19px;
-
     font-size: 14px;
     color: #333;
     border-bottom: 1px solid #ccc;
@@ -254,7 +248,6 @@
     margin-top: 5px;
     margin-right: 20px;
     padding: 0;
-
     font-size: 13px;
     color: rgb(61, 61, 61);
     float: left;
@@ -290,7 +283,6 @@
     text-align: center;
     line-height: 37px;
     margin-bottom: 9px;
-
     border-radius: 50%;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.13);
     background-color: #fff;
@@ -335,16 +327,13 @@
 
 .le-tools-item span {
     display: inline-block;
-
     position: absolute;
     top: 2px;
     left: 25px;
-
     height: 11px;
     line-height: 11px;
     padding: 0 3px;
     font-size: 10px;
-
     border-radius: 5px;
     text-align: center;
     color: white;
@@ -395,6 +384,7 @@
 }
 
 /* 底部推荐 */
+
 .footer-author-box {
     margin-top: 24px;
     height: 43px;
@@ -410,7 +400,6 @@
     height: 21px;
     line-height: 0;
     margin-top: 3px;
-
     font-size: 16px;
     font-weight: bolder;
 }
@@ -449,7 +438,7 @@
     background-color: #fff;
 }
 
-.footer-author-box .had-guan{
+.footer-author-box .had-guan {
     background-color: #6cbd45;
     color: white;
 }
@@ -483,7 +472,7 @@
     background-color: #fafbfc;
 }
 
-.comment-form img {
+.comment-form #comMyAva {
     float: left;
     width: 32px;
     height: 32px;
@@ -494,13 +483,11 @@
 
 .comment-form .input {
     display: inline-block;
-
     width: 504px;
     min-height: 22px;
     line-height: 22px;
     padding: 7px 14px;
     border: 1px solid #ccc;
-
     color: rgb(134, 134, 134);
     background-color: #fff;
     font-size: 14px;
@@ -513,7 +500,7 @@
     color: #666666;
 }
 
-.when-com img {
+.when-com .bqimg {
     margin-left: 40px;
     width: 18px;
     height: 18px;
@@ -524,7 +511,6 @@
 }
 
 .when-com {
-    overflow: hidden;
     height: 36px;
     line-height: 45px;
     padding-right: 2px;
@@ -536,11 +522,10 @@
     width: 30px;
     height: 16p;
     margin-top: 8px;
-    margin-left: 12px; 
+    margin-left: 12px;
     text-align: center;
     line-height: 16px;
     padding: 6px 16px;
-
     background-color: #027fff;
     font-size: 15px;
     color: white;
@@ -551,6 +536,93 @@
 .when-com .kjj {
     color: #c2c2c2;
     font-size: 14px;
+}
+
+.emial-box {
+    position: relative;
+    z-index: 1;
+}
+
+/* 表情包 */
+
+.emoji-list-box {
+    position: absolute;
+    background-color: #fff;
+    padding: 12px;
+    box-shadow: 0 2px 13px 2px rgba(0, 0, 0, 0.247);
+    width: 280px;
+    height: 214px;
+    z-index: 1;
+    top: 44px;
+    left: 40px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.triangle-se {
+    position: absolute;
+    top: 37px;
+    left: 70px;
+    background-color: #fff;
+    border-top: 1px solid rgba(204, 204, 204, 0.726);
+    border-right: 1px solid rgba(204, 204, 204, 0.774);
+    width: 12px;
+    height: 12px;
+    z-index: 2;
+    transform: rotate(-45deg);
+}
+
+.emoji-list-box div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* background-color: pink; */
+}
+
+.emoji-list {
+    overflow: hidden;
+    height: 192px;
+}
+
+.emoji-list li {
+    float: left;
+    height: 22px;
+    padding: 5px 0;
+}
+
+.emoji-list li .emoji {
+    display: block;
+    padding: 0px 4px;
+    padding-left: 5px;
+    width: 22px;
+    height: 22px;
+}
+
+.emoji-list li .emoji:hover {
+    transition: all 0.2s;
+    transform: scale(1.2);
+}
+
+.emoji-bot-nav {
+    width: 37px;
+    margin: 0 auto;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.emoji-bot-nav li {
+    border: 4px solid #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    float: left;
+}
+
+.emoji-bot-nav .current {
+    border-color: rgb(146, 146, 146);
+}
+
+.emoji-btn {
+    cursor: pointer;
 }
 
 /* 评论list区 */
@@ -593,6 +665,14 @@
     width: 512px;
 }
 
+.com-content img, #inputPl img, .comment-form .input img, .rep-content img {
+    width: 19px;
+    height: 19px;
+    padding: 0 4px;
+    position: relative;
+    top: 3px;
+}
+
 .see-more {
     height: 22px;
     width: 512px;
@@ -611,13 +691,12 @@
     margin-left: 43px;
     margin-top: 6px;
     margin-bottom: 10px;
-
     font-size: 13px;
     color: #8a9aa9;
     border-bottom: 1px solid rgb(148, 148, 148);
 }
-.item-btn .like i,
-.item-btn .dislike i{
+
+.item-btn .like i, .item-btn .dislike i {
     color: rgb(120, 202, 120);
 }
 
@@ -631,22 +710,25 @@
     cursor: pointer;
 }
 
-.zan .icon-dianzan{
+.zan .icon-dianzan {
     font-size: 15px;
 }
+
 .cai .icon-dianzan1 {
     font-size: 15px;
     margin-top: 2px;
 }
-.zan .icon-dianzan{
- position: relative;
- top: -1px;
+
+.zan .icon-dianzan {
+    position: relative;
+    top: -1px;
 }
 
-.item-btn li span{
+.item-btn li span {
     font-size: 14px;
     padding: 0 2px;
 }
+
 /* 回复输入框 */
 
 .reply-form {
@@ -657,11 +739,16 @@
     margin-left: 43px;
 }
 
+.hfout-box {
+    position: relative;
+    top: -44px;
+    right: 42px;
+}
+
 .reply-form .input {
     min-height: 22px;
     line-height: 22px;
     width: 479px;
-
     color: rgb(134, 134, 134);
     display: inline-block;
     padding: 7px 12px;
@@ -677,7 +764,7 @@
     color: #666666;
 }
 
-.when-reply img {
+.when-reply .bqimg {
     width: 18px;
     height: 18px;
     padding: 2px;
@@ -686,7 +773,6 @@
 }
 
 .when-reply {
-    overflow: hidden;
     height: 36px;
     line-height: 45px;
     font-size: 13px;
@@ -697,11 +783,9 @@
     width: 30px;
     height: 16p;
     line-height: 16px;
-
     text-align: center;
     margin-top: 8px;
     margin-left: 12px;
-
     padding: 6px 16px;
     background-color: #027fff;
     font-size: 15px;
